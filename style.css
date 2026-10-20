@@ -34,20 +34,20 @@ body {
 #new_game {
     position: absolute; 
     width: 160px; 
-    right: 750px; 
-    bottom: 700px; 
+    right: 375px; 
+    bottom: 350px; 
     background: black; 
     text-align: center; 
     font-family: 'Roboto', sans-serif;
 
 }
 
-link {
+.link {
+
   text-decoration: none;
-  color: inherit;
   display: block; 
 }
 
 .link:hover .card {
-  background-color: #e0e0e0;
+  color: coral;
 }
