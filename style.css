@@ -20,3 +20,34 @@ section{
     object-fit: contain;
     cursor: zoom-in;
 }
+
+
+body {
+    background-color: #6c0277;}
+
+
+#container {
+    position:relative; /* make this relative to have the inner div absolute without     breaking out */
+  
+}
+
+#new_game {
+    position: absolute; 
+    width: 160px; 
+    right: 750px; 
+    bottom: 700px; 
+    background: black; 
+    text-align: center; 
+    font-family: 'Roboto', sans-serif;
+
+}
+
+link {
+  text-decoration: none;
+  color: inherit;
+  display: block; 
+}
+
+.link:hover .card {
+  background-color: #e0e0e0;
+}
