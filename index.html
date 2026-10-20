@@ -13,9 +13,38 @@
         </header>
         <main>
             <section>
-                <img src="./images/cyn.jpeg" alt="try" class="image"/>
+
+                <img src="./images/titre.jpg" alt="try" class="image" usemap="#imagemap" role="button" tabindex="0" aria-label="Afficher l’image en plein écran"/>
+                <map name="imagemap">
+                    <area shape="rect" coords="400,300,600,450" href="./images/cyn.jpeg" alt="culte of cyn"  color="#ff0000">
+                </map>
             </section>
         </main>
         <footer>
             <p>&copy; 2024 Cell-Saver. Tous droits réservés.</p>
         </footer>
+        <!-- <script>
+            const image = document.querySelector(".image");
+
+            async function toggleFullscreen() {
+                try {
+                    if (document.fullscreenElement === image) {
+                        await document.exitFullscreen();
+                    } else {
+                        await image.requestFullscreen();
+                    }
+                } catch (error) {
+                    console.error("Impossible d’afficher l’image en plein écran.", error);
+                }
+            }
+
+            image.addEventListener("click", toggleFullscreen);
+            image.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleFullscreen();
+                }
+            });
+        </script>-->
+    </body>
+</html>
