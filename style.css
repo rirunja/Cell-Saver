@@ -23,12 +23,15 @@ section{
 
 
 body {
-    background-color: #6c0277;}
+    background-color: #6c0277;
+}
 
+section {
+         background-color: #6c0277;
+}
 
 #container {
-    position:relative; /* make this relative to have the inner div absolute without     breaking out */
-  
+    position:relative; 
 }
 
 #new_game {
@@ -42,12 +45,18 @@ body {
 
 }
 
-.link {
+.text {
+   text-align: center;
+}
 
-  text-decoration: none;
+.link {
+  text-decoration :none;
+  color: hotpink;
   display: block; 
 }
 
 .link:hover .card {
-  color: coral;
+  color: red;
+  text-decoration :none;
 }
+
