@@ -24,8 +24,9 @@ section{
 
 body {
     background-color: #6c0277;
+    margin: 0;
+    padding: 0;
 }
-
 section {
          background-color: #6c0277;
 }
