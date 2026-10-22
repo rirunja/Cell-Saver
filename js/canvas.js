@@ -30,12 +30,14 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 6;
+var etape = 8;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
+var grab4 = false;
 var bnt2;
 var bnt4;
+var bnt8; 
 
 
 
@@ -83,8 +85,27 @@ canvas.addEventListener("click", function(event) {
                     grab = true;
                 }
             }
-            
+           
             break;
+        case 4*s: 
+        if (grab) {
+            grab = false; 
+            grab4 = false;
+            if (x >= bnt8.x2 && x <= bnt8.x2 + bnt8.w2 && y >= bnt8.y2 && y <= bnt8.y2 + bnt8.h2) {
+                console.log("ok");
+            }
+
+        } else {
+            if (x >= bnt8.x1 && x <= bnt8.x1 + bnt8.w1 && y >= bnt8.y1 && y <= bnt8.y1 + bnt8.h1) {
+                console.log("catch");
+                    grab = true;
+                    grab4 = true; 
+                }
+        }
+
+           
+           break; 
+          
     }
 });
 
@@ -112,7 +133,7 @@ canvas.addEventListener("mousemove", function(event) {
             c.fillRect(bnt2.x2, bnt2.y2, bnt2.w2, bnt2.h2);
             break;
         case 2*s:
-            /*c.drawImage(bg, 0, 0, cw, ch);
+            c.drawImage(bg, 0, 0, cw, ch);
             if (grab){
                 if (grab && y>= bnt4.w2 / 2 && y <= ch - bnt4.w2 / 2) {
                     bnt4.y2 = y - bnt4.w2/2;
@@ -128,7 +149,8 @@ canvas.addEventListener("mousemove", function(event) {
 
             }c.fillRect(bnt4.x4, bnt4.y4, bnt4.w4, bnt4.h4);
             break;
-        case 3*s:*/
+        case 3*s:
+            c.drawImage(bg, 0, 0, cw, ch);
             if (grab){
                 if (grab && x>= bnt4.w3 / 2 && x <= cw - bnt4.w3 / 2) {
                     if (y>bnt4.y1 + bnt4.h1 * 0.5) {
@@ -162,6 +184,9 @@ canvas.addEventListener("mousemove", function(event) {
 
             }c.fillRect(bnt4.x4, bnt4.y4, bnt4.w4, bnt4.h4);
             break;
+        case 4*s: 
+          c.drawImage(bg, 0, 0, cw, ch);
+            
 
     }c.fillRect(0, 0, 100, 100);
     /*c.fillRect(400, y - 50, 50, 100);
@@ -233,6 +258,21 @@ function levelstart() {
                 h4: 50
             };
             break;
+        case 4*s: 
+        c.fillStyle = "rgba(202,78,23,1)"; 
+        bnt8= {
+           x1: 385, 
+           y1: 200, 
+           w1: 50, 
+           h1: 180,
+           x2: 600, 
+           y2: 300, 
+           w2: 300, 
+           h2: 20
+        };
+        break; 
+
+        
     }
 }
 levelstart();
