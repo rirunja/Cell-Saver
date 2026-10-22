@@ -129,6 +129,7 @@ canvas.addEventListener("mousemove", function(event) {
             }c.fillRect(bnt4.x4, bnt4.y4, bnt4.w4, bnt4.h4);
             break;
         case 3*s:*/
+            c.drawImage(bg, 0, 0, cw, ch);
             if (grab){
                 if (grab && x>= bnt4.w3 / 2 && x <= cw - bnt4.w3 / 2) {
                     if (y>bnt4.y1 + bnt4.h1 * 0.5) {
