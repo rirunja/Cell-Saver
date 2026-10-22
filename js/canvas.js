@@ -45,7 +45,7 @@ canvas.addEventListener("click", function(event) {
     switch (etape) {
         case 0:
             c.fillStyle = "rgba(255, 0, 0, 1)";
-            if (x >= btn.x && x <= btn.x + btn.w && y >= btn.y && y <= btn.y + btn.h) {
+            if (x >= btn.b1.x && x <= btn.b1.x + btn.b1.w && y >= btn.b1.y && y <= btn.b1.y + btn.b1.h) {
                 etape += s;
                 levelstart();
             }
@@ -56,16 +56,16 @@ canvas.addEventListener("click", function(event) {
                 grab = false;
                 grab1 = false;
                 grab2 = false;
-                if (10>= btn2.y1 && 10>= btn2.y2) {
+                if (10>= btn2.b1.y && 10>= btn2.b2.y) {
                     etape += s;
                     levelstart();
                 }
             }else {
-                if (x >= btn2.x1 && x <= btn2.x1 + btn2.w1 && y >= btn2.y1 && y <= btn2.y1 + btn2.h1) {
+                if (x >= btn2.b1.x && x <= btn2.b1.x + btn2.b1.w && y >= btn2.b1.y && y <= btn2.b1.y + btn2.b1.h) {
                     grab1 = true;
                     grab = true;
                 }
-                if (x >= btn2.x2 && x <= btn2.x2 + btn2.w2 && y >= btn2.y2 && y <= btn2.y2 + btn2.h2) {
+                if (x >= btn2.b2.x && x <= btn2.b2.x + btn2.b2.w && y >= btn2.b2.y && y <= btn2.b2.y + btn2.b2.h) {
                     grab2 = true;
                     grab = true;
                 }
@@ -74,12 +74,12 @@ canvas.addEventListener("click", function(event) {
         case 2*s:
             if (grab) {
                 grab = false;
-                if (x >= btn4.x4 && x <= btn4.x4 + btn4.w4 && y >= btn4.y4 && y <= btn4.y4 + btn4.h4) {
+                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h) {
                     etape += s;
                     levelstart();
                 }
             }else {
-                if (x >= btn4.x1 && x <= btn4.x1 + btn4.w1 && y >= btn4.y1 && y <= btn4.y1 + btn4.h1) {
+                if (x >= btn4.b1.x && x <= btn4.b1.x + btn4.b1.w && y >= btn4.b1.y && y <= btn4.b1.y + btn4.b1.h) {
                     grab = true;
                 }
             }
@@ -96,20 +96,20 @@ canvas.addEventListener("mousemove", function(event) {
         case 0:
             c.drawImage(bg, 0, 0, cw, ch);
             c.fillStyle = "rgba(0, 0, 0, 1)";
-            c.fillRect(btn.x, btn.y, btn.w, btn.h);
+            c.fillRect(btn.b1.x, btn.b1.y, btn.b1.w, btn.b1.h);
             c.fillStyle = "rgba(255, 255, 255, 1)";
-            c.fillText("Cliquez sur le bouton pour commencer", btn.x + 5, btn.y + btn.h / 2 );
+            c.fillText("Cliquez sur le bouton pour commencer", btn.b1.x + 5, btn.b1.y + btn.b1.h / 2 );
             break;
         case 1*s:
             c.drawImage(bg, 0, 0, cw, ch);
-            if (grab1 && y>= btn2.h1 / 2 && y <= 300 - btn2.h1 / 2) {
-                btn2.y1 = y - btn2.h1 / 2;
+            if (grab1 && y>= btn2.b1.h / 2 && y <= 300 - btn2.b1.h / 2) {
+                movey(y, btn2.b1);
             }
-            if (grab2 && y>= btn2.h2 / 2 && y <= 300 - btn2.h2 / 2) {
-                btn2.y2 = y - btn2.h2 / 2;
+            if (grab2 && y>= btn2.b2.h / 2 && y <= 300 - btn2.b2.h / 2) {
+                movey(y, btn2.b2);
             }
-            c.fillRect(btn2.x1, btn2.y1, btn2.w1, btn2.h1);
-            c.fillRect(btn2.x2, btn2.y2, btn2.w2, btn2.h2);
+            c.fillRect(btn2.b1.x, btn2.b1.y, btn2.b1.w, btn2.b1.h);
+            c.fillRect(btn2.b2.x, btn2.b2.y, btn2.b2.w, btn2.b2.h);
             break;
         case 2*s:
             /*c.drawImage(bg, 0, 0, cw, ch);
@@ -131,37 +131,38 @@ canvas.addEventListener("mousemove", function(event) {
         case 3*s:*/
             c.drawImage(bg, 0, 0, cw, ch);
             if (grab){
-                if (grab && x>= btn4.w3 / 2 && x <= cw - btn4.w3 / 2) {
-                    if (y>btn4.y1 + btn4.h1 * 0.5) {
-                        btn4.h3 = y - btn4.y3 - btn4.w3 / 2;
-                        btn4.y3 = btn4.y1;
+                if (grab && x>= btn4.b3.w / 2 && x <= cw - btn4.b3.w / 2) {
+                    if (y>btn4.b1.y + btn4.b1.h * 0.5) {
+                        btn4.b3.h = y - btn4.b3.y - btn4.b3.w / 2;
+                        btn4.b3.y = btn4.b1.y;
                     }else{
-                        btn4.h3 = btn4.y1 - y + btn4.w3 / 2;
-                        btn4.y3 = y + btn4.w1 / 2;
+                        btn4.b3.h = btn4.b1.y - y + btn4.b3.w / 2;
+                        stmovey(y,btn4.b3, btn4.b1.h);
                     }
                     
                 }
-                if (grab && y>= btn4.h2 / 2 && y <= ch - btn4.h2 / 2) {
-                    btn4.y2 = y - btn4.h2/2;
+                if (grab && y>= btn4.b2.h / 2 && y <= ch - btn4.b2.h / 2) {
+                    movey(y, btn4.b2);
                     //c.fillStyle = "rgba(0, 0, 255, 0.3)";
                 }
-                if (grab && x>= btn4.w1 / 2 && x <= cw - btn4.w1 / 2) {
-                    if (x>btn4.x2 + btn4.w2 / 2) {
-                        btn4.w2 = x - btn4.x2 + btn4.h2 / 2;
-                        btn4.x2 = btn4.x1;
+                if (grab && x>= btn4.b1.w / 2 && x <= cw - btn4.b1.w / 2) {
+                    if (x>btn4.b2.x + btn4.b2.w / 2) {
+                        btn4.b2.w = x - btn4.b2.x + btn4.b2.h / 2;
+                        fixex(btn4.b2, btn4.b1);
                     }else{
-                        btn4.w2 = btn4.x1 - x + btn4.h2 *1.5;
-                        btn4.x2 = x - btn4.h2 / 2;
+                        btn4.b2.w = btn4.b1.x - x + btn4.b2.h *1.5;
+                        btn4.b2.x = x - btn4.b1.w / 2;
+                        stmovex(x,btn4.b2, btn4.b1.w);
                     }
                 }
-                c.drawImage(cyn, btn4.x2, btn4.y2, btn4.w2, btn4.h2);
-                c.drawImage(cyn, btn4.x3, btn4.y3, btn4.w3, btn4.h3);
-                //c.fillRect(btn4.x2, btn4.y2, btn4.w2, btn4.h2);
+                c.drawImage(cyn, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+                c.drawImage(cyn, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+                //c.fillRect(btn4.b2, btn4.b2.y, btn4.b2.w, btn4.b2.h);
                 //c.fillRect(btn4.x3, btn4.y3, btn4.w3, btn4.h3);
             }else {
-                c.fillRect(btn4.x1, btn4.y1, btn4.w1, btn4.h1);
+                c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
 
-            }c.fillRect(btn4.x4, btn4.y4, btn4.w4, btn4.h4);
+            }c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break;
 
     }c.fillRect(0, 0, 100, 100);
@@ -174,22 +175,28 @@ function levelstart() {
     switch (etape) {
         case 0:
             btn = {
-                x: cw / 2 - 100,
-                y: ch / 2 - 50,
-                w: 200,
-                h: 100
+                b1:{
+                    x: cw / 2 - 100,
+                    y: ch / 2 - 50,
+                    w: 200,
+                    h: 100
+                }
             };
             break;
         case 1*s:
             btn2={
-                x1: 385,
-                y1: 200,
-                w1: 50,
-                h1: 100,
-                x2: 885,
-                y2: 200,
-                w2: 50,
-                h2: 100
+                b1:{
+                    x: 385,
+                    y: 200,    
+                    w: 50,
+                    h: 100
+                },
+                b2:{
+                    x: 885,
+                    y: 200,
+                    w: 50,
+                    h: 100
+                }
             };
             break;
         case 2*s:/*
@@ -216,24 +223,76 @@ function levelstart() {
         case 3*s:*/
             c.fillStyle = "rgba(255, 0, 255, 1)";
             btn4={
-                x1: 385,
-                y1: 200,
-                w1: 50,
-                h1: 50,
-                x2: 385,
-                y2: 200,
-                w2: 50,
-                h2: 50,
-                x3: 385,
-                y3: 200,
-                w3: 50,
-                h3: 50,
-                x4: 785,
-                y4: 400,
-                w4: 50,
-                h4: 50
+                b1:{
+                    x: 385,
+                    y: 200,
+                    w: 50,
+                    h: 50
+                },
+                b2:{
+                    x: 385,
+                    y: 200,
+                    w: 50,
+                    h: 50
+                },
+                b3:{
+                    x: 385,
+                    y: 200,
+                    w: 50,
+                    h: 50},
+                b4:{
+                    x: 785,
+                    y: 400,
+                    w: 50,
+                    h: 50
+                }
+                
+                
+                
             };
+            console.log(btn4.b1.x);
             break;
     }
 }
+
+function movey(y,b) {
+    b.y = y - b.h / 2;
+}
+function movex(x,b) {
+    b.x = x - b.w / 2;
+}
+function movexy(x,y,b) {
+    b.x = x - b.w / 2;
+    b.y = y - b.h / 2;
+}
+function stmovexy(x,y,b,w,h) {
+    b.x = x - w / 2;
+    b.y = y - h / 2;
+}
+function stmovex(x,b,w) {
+    b.x = x - w / 2;
+}
+function stmovey(y,b,h) {
+    b.y = y - h / 2;
+}
+function fixey(b,b2) {
+    b.y = b2.y;
+}
+function fixex(b,b2) {
+    b.x = b2.x;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 levelstart();
