@@ -30,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 6;
+var etape = 0;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -71,7 +71,7 @@ canvas.addEventListener("click", function(event) {
                 }
             }
             break;
-        case 2*s,3*s:
+        case 2*s:
             if (grab) {
                 grab = false;
                 if (x >= bnt4.x4 && x <= bnt4.x4 + bnt4.w4 && y >= bnt4.y4 && y <= bnt4.y4 + bnt4.h4) {
@@ -191,7 +191,7 @@ function levelstart() {
                 h2: 100
             };
             break;
-        case 2*s:
+        case 2*s:/*
             c.fillStyle = "rgba(0, 0, 255, 1)";
             bnt4={
                 x1: 385,
@@ -212,7 +212,7 @@ function levelstart() {
                 h4: 50
             };
             break;
-        case 3*s:
+        case 3*s:*/
             c.fillStyle = "rgba(255, 0, 255, 1)";
             bnt4={
                 x1: 385,
