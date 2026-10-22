@@ -12,6 +12,11 @@ c.fillStyle = "rgba(0, 0, 0, 1)";
 
 let bg = new Image();
 bg.src = "./images/titre.jpg";
+let cyn = new Image();
+cyn.src = "./images/cyn.jpeg";
+
+
+
 var btn = {
     x: cw / 2 - 100,
     y: ch / 2 - 50,
@@ -25,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 0;
+var etape = 6;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -66,7 +71,7 @@ canvas.addEventListener("click", function(event) {
                 }
             }
             break;
-        case 2*s:
+        case 2*s,3*s:
             if (grab) {
                 grab = false;
                 if (x >= bnt4.x4 && x <= bnt4.x4 + bnt4.w4 && y >= bnt4.y4 && y <= bnt4.y4 + bnt4.h4) {
@@ -107,7 +112,7 @@ canvas.addEventListener("mousemove", function(event) {
             c.fillRect(bnt2.x2, bnt2.y2, bnt2.w2, bnt2.h2);
             break;
         case 2*s:
-            c.drawImage(bg, 0, 0, cw, ch);
+            /*c.drawImage(bg, 0, 0, cw, ch);
             if (grab){
                 if (grab && y>= bnt4.w2 / 2 && y <= ch - bnt4.w2 / 2) {
                     bnt4.y2 = y - bnt4.w2/2;
@@ -123,11 +128,40 @@ canvas.addEventListener("mousemove", function(event) {
 
             }c.fillRect(bnt4.x4, bnt4.y4, bnt4.w4, bnt4.h4);
             break;
-        case 3*s:
-            c.drawImage(bg, 0, 0, cw, ch);
-            c.beginPath();
-            c.arc(400, 300, 50, 0, Math.PI);
-            c.fill();
+        case 3*s:*/
+            if (grab){
+                if (grab && x>= bnt4.w3 / 2 && x <= cw - bnt4.w3 / 2) {
+                    if (y>bnt4.y1 + bnt4.h1 * 0.5) {
+                        bnt4.h3 = y - bnt4.y3 - bnt4.w3 / 2;
+                        bnt4.y3 = bnt4.y1;
+                    }else{
+                        bnt4.h3 = bnt4.y1 - y + bnt4.w3 / 2;
+                        bnt4.y3 = y + bnt4.w1 / 2;
+                    }
+                    
+                }
+                if (grab && y>= bnt4.h2 / 2 && y <= ch - bnt4.h2 / 2) {
+                    bnt4.y2 = y - bnt4.h2/2;
+                    //c.fillStyle = "rgba(0, 0, 255, 0.3)";
+                }
+                if (grab && x>= bnt4.w1 / 2 && x <= cw - bnt4.w1 / 2) {
+                    if (x>bnt4.x2 + bnt4.w2 / 2) {
+                        bnt4.w2 = x - bnt4.x2 + bnt4.h2 / 2;
+                        bnt4.x2 = bnt4.x1;
+                    }else{
+                        bnt4.w2 = bnt4.x1 - x + bnt4.h2 *1.5;
+                        bnt4.x2 = x - bnt4.h2 / 2;
+                    }
+                }
+                c.drawImage(cyn, bnt4.x2, bnt4.y2, bnt4.w2, bnt4.h2);
+                c.drawImage(cyn, bnt4.x3, bnt4.y3, bnt4.w3, bnt4.h3);
+                //c.fillRect(bnt4.x2, bnt4.y2, bnt4.w2, bnt4.h2);
+                //c.fillRect(bnt4.x3, bnt4.y3, bnt4.w3, bnt4.h3);
+            }else {
+                c.fillRect(bnt4.x1, bnt4.y1, bnt4.w1, bnt4.h1);
+
+            }c.fillRect(bnt4.x4, bnt4.y4, bnt4.w4, bnt4.h4);
+            break;
 
     }c.fillRect(0, 0, 100, 100);
     /*c.fillRect(400, y - 50, 50, 100);
@@ -180,9 +214,24 @@ function levelstart() {
             break;
         case 3*s:
             c.fillStyle = "rgba(255, 0, 255, 1)";
-            c.beginPath();
-            c.arc(400, 300, 50, 5, Math.PI);
-            //c.fill();
+            bnt4={
+                x1: 385,
+                y1: 200,
+                w1: 50,
+                h1: 50,
+                x2: 385,
+                y2: 200,
+                w2: 50,
+                h2: 50,
+                x3: 385,
+                y3: 200,
+                w3: 50,
+                h3: 50,
+                x4: 785,
+                y4: 400,
+                w4: 50,
+                h4: 50
+            };
             break;
     }
 }
