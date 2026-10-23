@@ -196,7 +196,7 @@ canvas.addEventListener("mousemove", function(event) {
 
             }c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break;
-        case 4*s: 
+        case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
           
            if (grab4 && (y> btn8.b1.h || y<btn8.b1.h)) {
@@ -358,34 +358,34 @@ function levelstart() {
 
 canvas.addEventListener("dblclick",function(event) {
     switch (etape) {
-         case 3*s:  
+        case 3*s:  
          
-           c.drawImage(bg, 0, 0, cw, ch);
-           const{ offsetX:x, offsetY:y } = event;
-           if (!no_hold) {
+            c.drawImage(bg, 0, 0, cw, ch);
+            const{ offsetX:x, offsetY:y } = event;
+            if (!no_hold) {
               
-              if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y) {
-                btn8.b3.y+=2; 
+                if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y) {
+                    btn8.b3.y+=2; 
 
 
-               }
+                }
 
-              if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y) {
-                btn8.b4.y+=2; 
-              }
-              
-              if (btn8.b4.y==btn8.b1.y && btn8.b3.y==btn8.b1.y) {
+                if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y) {
+                    btn8.b4.y+=2; 
+                }
                 
-                
-                //levelstart();
-              }
+                if (btn8.b4.y==btn8.b1.y && btn8.b3.y==btn8.b1.y) {
+                    
+                    
+                    //levelstart();
+                }
 
 
-              c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
-              c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
-              c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
-              c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
-              break;
+                c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
+                c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
+                c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
+                c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
+                break;
     }
 }
    
