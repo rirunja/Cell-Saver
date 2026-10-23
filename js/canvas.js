@@ -30,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 8;
+var etape = 0;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -148,7 +148,7 @@ canvas.addEventListener("mousemove", function(event) {
             if (grab){
                 if (grab && y>= btn4.w2 / 2 && y <= ch - btn4.w2 / 2) {
                     btn4.y2 = y - btn4.w2/2;
-                    //c.fillStyle = "rgba(0, 0, 255, 0.3)";
+                    c.fillStyle = "rgba(0, 0, 255, 0.3)";
                 }
                 if (grab && x>= btn4.w2 / 2 && x <= cw - btn4.w2 / 2) {
                     btn4.x2 = x - btn4.w2/2;
@@ -175,7 +175,7 @@ canvas.addEventListener("mousemove", function(event) {
                 }
                 if (grab && y>= btn4.b2.h / 2 && y <= ch - btn4.b2.h / 2) {
                     movey(y, btn4.b2);
-                    //c.fillStyle = "rgba(0, 0, 255, 0.3)";
+                    c.fillStyle = "rgba(0, 0, 255, 0.3)";
                 }
                 if (grab && x>= btn4.b1.w / 2 && x <= cw - btn4.b1.w / 2) {
                     if (x>btn4.b2.x + btn4.b2.w / 2) {
@@ -189,8 +189,8 @@ canvas.addEventListener("mousemove", function(event) {
                 }
                 c.drawImage(cyn, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
                 c.drawImage(cyn, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
-                //c.fillRect(btn4.b2, btn4.b2.y, btn4.b2.w, btn4.b2.h);
-                //c.fillRect(btn4.x3, btn4.y3, btn4.w3, btn4.h3);
+                c.fillRect(btn4.b2, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+                c.fillRect(btn4.x3, btn4.y3, btn4.w3, btn4.h3);
             }else {
                 c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
 
@@ -261,23 +261,31 @@ function levelstart() {
         case 2*s:
             c.fillStyle = "rgba(0, 0, 255, 1)";
             btn4={
-                x1: 385,
-                y1: 200,
-                w1: 50,
-                h1: 50,
-                x2: 385,
-                y2: 200,
-                w2: 50,
-                h2: 800,
-                x3: 385,
-                y3: 200,
-                w3: 50,
-                h3: 800,
-                x4: 785,
-                y4: 400,
-                w4: 50,
-                h4: 50
-            };
+                b1: {
+                x: 385,
+                y: 200,
+                w: 50,
+                h: 50
+            }, 
+                b2: {
+                x: 385,
+                y: 200,
+                w: 50,
+                h: 800
+            },
+                b3: {
+                    x: 385,
+                y: 200,
+                w: 50,
+                h: 800
+            }, 
+
+             b4 :  {
+                x: 785,
+                y: 400,
+                w: 50,
+                h: 50
+            }};
             break;
         case 3*s:
             c.fillStyle = "rgba(255, 0, 255, 1)";
