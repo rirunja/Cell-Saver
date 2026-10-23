@@ -356,15 +356,22 @@ canvas.addEventListener("dblclick",function(event) {
            const{ offsetX:x, offsetY:y } = event;
            if (!no_hold) {
               
-              if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<=btn8.b1.y) {
-                btn8.b3.y+=1; 
+              if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y) {
+                btn8.b3.y+=2; 
 
 
-                 }
+               }
 
-              if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<=btn8.b1.y) {
-                btn8.b4.y+=1; 
-                 }
+              if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y) {
+                btn8.b4.y+=2; 
+              }
+              
+              if (btn8.b4.y==btn8.b1.y && btn8.b3.y==btn8.b1.y) {
+                
+                
+                //levelstart();
+              }
+
 
               c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
               c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
