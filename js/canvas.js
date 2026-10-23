@@ -289,7 +289,7 @@ function levelstart() {
             break;
         case 3*s:
             c.fillStyle = "rgba(255, 0, 255, 1)";
-            btn4={
+            btn6={
                 b1:{
                     x: 385,
                     y: 200,
