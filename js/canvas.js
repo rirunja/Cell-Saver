@@ -38,6 +38,9 @@ var grab4 = false;
 var btn2;
 var btn4;
 var btn8; 
+var no_hold=true;
+
+
 
 
 
@@ -87,23 +90,31 @@ canvas.addEventListener("click", function(event) {
             }
            
             break;
-        case 4*s: 
-        if (grab) {
-            grab = false; 
-            grab4 = false;
-            if (x >= bnt8.x2 && x <= bnt8.x2 + bnt8.w2 && y >= bnt8.y2 && y <= bnt8.y2 + bnt8.h2) {
-                console.log("ok");
-            }
+        case 4*s:
+         if (no_hold) { 
+           if (grab) {
+              grab = false; 
+              grab4 = false; 
+              if (btn8.b1.x >= btn8.b2.x && btn8.b1.x <= btn8.b2.x + btn8.b2.w && btn8.b1.y >= btn8.b2.y && btn8.b1.y <= btn8.b2.y + btn8.b2.h) {
+                no_hold = false; 
+              }
 
-        } else {
-            if (x >= bnt8.x1 && x <= bnt8.x1 + bnt8.w1 && y >= bnt8.y1 && y <= bnt8.y1 + bnt8.h1) {
-                console.log("catch");
-                    grab = true;
-                    grab4 = true; 
-                }
-        }
+           } else {
+              if (x >= btn8.b1.x && x <= btn8.b1.x + btn8.b1.w && y >= btn8.b1.y && y <= btn8.b1.y + btn8.b1.h) {
+                
+                      grab = true;
+                      grab4 = true; 
+                    
+                  }
+          }
 
+         } 
+         
+        else {
            
+         }
+
+        
            break; 
           
     }
@@ -187,6 +198,30 @@ canvas.addEventListener("mousemove", function(event) {
             break;
         case 4*s: 
           c.drawImage(bg, 0, 0, cw, ch);
+          
+           if (grab4 && (y> btn8.b1.h || y<btn8.b1.h)) {
+             
+                movey(y, btn8.b1);
+                btn8.b4.x=btn8.b1.x+40; 
+                btn8.b3.x=btn8.b1.x
+                
+                
+            }
+            if (grab4 && (x> btn8.b1.w || x<btn8.b1.w)) {
+               
+                movex(x, btn8.b1);
+               
+                btn8.b3.y=btn8.b1.y-20
+                btn8.b4.y=btn8.b1.y-20
+              
+            }
+            c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
+            c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
+            c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
+            c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
+            break; 
+        
+          
             
 
     }c.fillRect(0, 0, 100, 100);
@@ -223,7 +258,7 @@ function levelstart() {
                 }
             };
             break;
-        case 2*s:/*
+        case 2*s:
             c.fillStyle = "rgba(0, 0, 255, 1)";
             btn4={
                 x1: 385,
@@ -244,7 +279,7 @@ function levelstart() {
                 h4: 50
             };
             break;
-        case 3*s:*/
+        case 3*s:
             c.fillStyle = "rgba(255, 0, 255, 1)";
             btn4={
                 b1:{
@@ -277,27 +312,71 @@ function levelstart() {
             console.log(btn4.b1.x);
             break;
         case 4*s: 
-        c.fillStyle = "rgba(202,78,23,1)"; 
-        bnt8= {
-            b1:{
-                x1: 385, 
-                y1: 200, 
-                w1: 50, 
-                h1: 180
+            c.fillStyle = "rgba(202,78,23,1)"; 
+            btn8= {
+              b1:{
+                x: 385, 
+                y: 200, 
+                w: 50, 
+                h: 180
             },
-            b2:{
-                x2: 600, 
-                y2: 300, 
-                w2: 300, 
-                h2: 20
+              b2:{
+                x: 600, 
+                y: 300, 
+                w: 50, 
+                h: 10
+            },
+              b3:{
+                x: 385, 
+                y: 180, 
+                w: 10,
+                h: 10
+            },
+              b4:{
+                x: 425, 
+                y: 180, 
+                w: 10,
+                h: 10
             }
+
+
            
         };
-        break; 
+         break; 
 
         
     }
 }
+
+canvas.addEventListener("dblclick",function(event) {
+    switch (etape) {
+         case 4*s:  
+         
+           c.drawImage(bg, 0, 0, cw, ch);
+           const{ offsetX:x, offsetY:y } = event;
+           if (!no_hold) {
+              
+              if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<=btn8.b1.y) {
+                btn8.b3.y+=1; 
+
+
+                 }
+
+              if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<=btn8.b1.y) {
+                btn8.b4.y+=1; 
+                 }
+
+              c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
+              c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
+              c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
+              c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
+              break;
+    }
+}
+   
+
+
+})
 
 function movey(y,b) {
     b.y = y - b.h / 2;
