@@ -30,11 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-<<<<<<< HEAD
-var etape = 6*s;
-=======
-var etape = 8;
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
+var etape = 2*s;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -43,17 +39,14 @@ var grab5=false;
 var grab6=false; 
 var btn2;
 var btn4;
-var btn8; 
+var btn4; 
 var btn10;
 var btn12; 
 var no_hold=true;
-<<<<<<< HEAD
 var lock;
-=======
 var count_press=0; 
 var souris_enfoncée = null; 
 var duree_maintenue = 0; 
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
 
 
@@ -109,12 +102,12 @@ canvas.addEventListener("click", function(event) {
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
-                    if (btn8.b1.x >= btn8.b2.x && btn8.b1.x <= btn8.b2.x + btn8.b2.w && btn8.b1.y >= btn8.b2.y && btn8.b1.y <= btn8.b2.y + btn8.b2.h) {
+                    if (btn4.b1.x >= btn4.b2.x && btn4.b1.x <= btn4.b2.x + btn4.b2.w && btn4.b1.y >= btn4.b2.y && btn4.b1.y <= btn4.b2.y + btn4.b2.h) {
                         no_hold = false; 
                     }
 
                 } else {
-                    if (x >= btn8.b1.x && x <= btn8.b1.x + btn8.b1.w && y >= btn8.b1.y && y <= btn8.b1.y + btn8.b1.h) {
+                    if (x >= btn4.b1.x && x <= btn4.b1.x + btn4.b1.w && y >= btn4.b1.y && y <= btn4.b1.y + btn4.b1.h) {
                         
                         grab = true;
                         grab4 = true; 
@@ -129,7 +122,6 @@ canvas.addEventListener("click", function(event) {
             }
 
         
-<<<<<<< HEAD
             break; 
 
 
@@ -138,7 +130,7 @@ canvas.addEventListener("click", function(event) {
                 grab = false;
                 grab1 = false;
                 grab2 = false;
-                if (!lock.b1 && !lock.b2 && !lock.b3 && !lock.b4 && btn4.b3.x >= btn4.b1.x && btn4.b3.x <= btn4.b1.x + btn4.b1.w && btn4.b3.y >= btn4.b1.y && btn4.b3.y <= btn4.b1.y + btn4.b1.h && btn4.b4.x >= btn4.b2.x && btn4.b4.x <= btn4.b2.x + btn4.b2.w && btn4.b4.y >= btn4.b2.y && btn4.b4.y <= btn4.b2.y + btn4.b2.h) {
+                if (!lock.b1 && !lock.b2 && !lock.b3 && !lock.b4 && btn4.b3.x >= btn4.b1.x - btn4.b3.w/2 && btn4.b3.x <= btn4.b1.x + btn4.b1.w + btn4.b3.w/2 && btn4.b3.y >= btn4.b1.y - btn4.b3.h/2 && btn4.b3.y <= btn4.b1.y + btn4.b1.h + btn4.b3.h/2 && btn4.b4.x >= btn4.b2.x - btn4.b4.w/2 && btn4.b4.x <= btn4.b2.x + btn4.b2.w + btn4.b4.w/2 && btn4.b4.y >= btn4.b2.y - btn4.b4.h/2 && btn4.b4.y <= btn4.b2.y + btn4.b2.h + btn4.b4.h/2) {
                     etape += s;
                     levelstart();
                 }
@@ -152,8 +144,6 @@ canvas.addEventListener("click", function(event) {
                 }
             }
             break;
-=======
-           break; 
         case 4*s:
             if (grab) {
                 grab = false; 
@@ -198,7 +188,6 @@ canvas.addEventListener("click", function(event) {
           break; 
              
           
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
     }
 });
 
@@ -281,11 +270,7 @@ canvas.addEventListener("mousemove", function(event) {
         case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
           
-<<<<<<< HEAD
            if (grab4 && (y> btn4.b1.h || y<btn4.b1.h)) {
-=======
-           if (grab && (y> btn8.b1.h || y<btn8.b1.h)) {
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
              
                 movey(y, btn4.b1);
                 btn4.b4.x=btn4.b1.x+40; 
@@ -293,11 +278,7 @@ canvas.addEventListener("mousemove", function(event) {
                 
                 
             }
-<<<<<<< HEAD
             if (grab4 && (x> btn4.b1.w || x<btn4.b1.w)) {
-=======
-            if (grab && (x> btn8.b1.w || x<btn8.b1.w)) {
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
                
                 movex(x, btn4.b1);
                
@@ -310,7 +291,6 @@ canvas.addEventListener("mousemove", function(event) {
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break; 
-<<<<<<< HEAD
         
         case 6*s:
             if (grab1) {
@@ -346,7 +326,7 @@ canvas.addEventListener("mousemove", function(event) {
             if (lock.b4){
                 c.drawImage(bg, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             }
-=======
+            break;
         case 4*s: 
            c.drawImage(bg, 0, 0, cw, ch);
 
@@ -395,7 +375,6 @@ canvas.addEventListener("mousemove", function(event) {
            
           
             
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
     }c.fillRect(0, 0, 100, 100);
     /*c.fillRect(400, y - 50, 50, 100);
@@ -462,7 +441,7 @@ function levelstart() {
             break;
         case 3*s:*/
             c.fillStyle = "rgba(255, 0, 255, 1)";
-            btn6={
+            btn4={
                 b1:{
                     x: 385,
                     y: 200,
@@ -522,7 +501,6 @@ function levelstart() {
 
 
            
-<<<<<<< HEAD
             };break; 
         case 6*s:
             btn4= {
@@ -559,9 +537,6 @@ function levelstart() {
             }
             break;
         
-=======
-        };
-         break; 
 
         case 4*s:
             c.fillStyle = "rgba(65,89,185,1)";
@@ -613,7 +588,6 @@ function levelstart() {
           }
           break; 
 
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
     }
 }
 
@@ -643,27 +617,21 @@ canvas.addEventListener("dblclick",function(event) {
                     btn4.b4.y+=2; 
                 }
                 
-<<<<<<< HEAD
                 if (btn4.b4.y==btn4.b1.y && btn4.b3.y==btn4.b1.y) {
-                    
-                    //levelstart();
-=======
-                if (btn8.b4.y == btn8.b1.y && btn8.b3.y == btn8.b1.y) {
+
                     no_hold=true; 
                     etape+=s; 
                     levelstart();
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
                 }
             }
 
 
-<<<<<<< HEAD
                 c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
                 c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
                 c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
                 c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
                 
-            }break;
+            break;
         
         case 6*s:
             if (x >= btn4.b1.x && x <= btn4.b1.x + btn4.b1.w && y >= btn4.b1.y && y <= btn4.b1.y + btn4.b1.h) {
@@ -679,18 +647,6 @@ canvas.addEventListener("dblclick",function(event) {
                 lock.b4 = false;
             }
             // c.drawImage(cyn, 0, 0, cw, ch);
-            break;
-        
-    }
-        
-
-
-});
-=======
-            c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
-            c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
-            c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
-            c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
             break;
         /* case 5*s: 
           
@@ -716,7 +672,7 @@ canvas.addEventListener("dblclick",function(event) {
     }
 
 
-})
+});
  
 canvas.addEventListener("mousedown",function(event) {
     switch (etape) {
@@ -742,7 +698,7 @@ canvas.addEventListener("mouseup",function(event) {
                     
                     if (duree_maintenue>=5.0) {
                         no_hold=true; 
-                        etape+=1; 
+                        etape+=s; 
                         levelstart(); 
                     }
                     else {
@@ -758,9 +714,14 @@ canvas.addEventListener("mouseup",function(event) {
 
 
 })
+canvas.addEventListener("keydown",function(event) {
+    const pressedKey = event.key;
+    if (pressedKey == "Enter") {
+        etape += s;
+        levelstart();
+    }
+});
 
-
->>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
 function movey(y,b) {
     b.y = y - b.h / 2;
