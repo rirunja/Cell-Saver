@@ -30,7 +30,11 @@ bg.onload = function() {
 
 var s = 2;//step
 
+<<<<<<< HEAD
 var etape = 2*s;
+=======
+var etape = 0;
+>>>>>>> 57da4e6c4e73be49b6ac25ea3871159b95a1bb59
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -382,6 +386,7 @@ canvas.addEventListener("mousemove", function(event) {
     c.fillRect(x - 50, y - 50, 100, 50);*/
 });
 
+
 function levelstart() {
     switch (etape) {
         case 0:
@@ -469,7 +474,7 @@ function levelstart() {
                 
                 
             };
-            console.log(btn4.b1.x);
+            //console.log(btn4.b1.x);
             break;
         case 3*s: 
             c.fillStyle = "rgba(202,78,23,1)"; 
@@ -648,21 +653,7 @@ canvas.addEventListener("dblclick",function(event) {
             }
             // c.drawImage(cyn, 0, 0, cw, ch);
             break;
-        /* case 5*s: 
-          
-         const{offsetX:x2, offsetY:y2} = event;
-            if (!no_hold) {
-               if (Math.sqrt((x2 - btn12.b3.x) * ( x2 - btn12.b3.x) + ( y2 - btn12.b3.y) * ( y2 - btn12.b3.y)) < btn12.b3.r) {
-                count_press+=1; 
-                if (count_press == 3) {
-                  no_hold = true; 
-                  count_press = 0;
-                  etape+=s; 
-                  levelstart();
-                }
-               }
-            }
-            break; */
+       
     
         
 
@@ -696,7 +687,7 @@ canvas.addEventListener("mouseup",function(event) {
 
                     duree_maintenue = (Date.now() - souris_enfoncée)/1000; 
                     
-                    if (duree_maintenue>=5.0) {
+                    if (duree_maintenue>=2.5) {
                         no_hold=true; 
                         etape+=s; 
                         levelstart(); 
@@ -706,6 +697,7 @@ canvas.addEventListener("mouseup",function(event) {
                     }
                 }
             }
+            break; 
 
 
     }
@@ -721,6 +713,7 @@ canvas.addEventListener("keydown",function(event) {
         levelstart();
     }
 });
+
 
 
 function movey(y,b) {
