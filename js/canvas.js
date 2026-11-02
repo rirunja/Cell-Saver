@@ -30,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 0;
+var etape = 0*s;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
