@@ -324,7 +324,7 @@ canvas.addEventListener("mousemove", function(event) {
                 c.drawImage(bg, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             }
             if (lock.b4){
-                c.drawImage(bg, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+                c.drawImage(bg, btn4.b4.x, btn4.b4.y, btn4.b3.w, btn4.b3.h);
             }
             break;
         case 4*s: 
