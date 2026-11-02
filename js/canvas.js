@@ -30,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 0;
+var etape = 6*s;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -39,7 +39,7 @@ var btn2;
 var btn4;
 var btn8; 
 var no_hold=true;
-
+var lock;
 
 
 
@@ -91,32 +91,52 @@ canvas.addEventListener("click", function(event) {
            
             break;
         case 3*s:
-         if (no_hold) { 
-           if (grab) {
-              grab = false; 
-              grab4 = false; 
-              if (btn8.b1.x >= btn8.b2.x && btn8.b1.x <= btn8.b2.x + btn8.b2.w && btn8.b1.y >= btn8.b2.y && btn8.b1.y <= btn8.b2.y + btn8.b2.h) {
-                no_hold = false; 
-              }
+            if (no_hold) { 
+                if (grab) {
+                    grab = false; 
+                    grab4 = false; 
+                    if (btn8.b1.x >= btn8.b2.x && btn8.b1.x <= btn8.b2.x + btn8.b2.w && btn8.b1.y >= btn8.b2.y && btn8.b1.y <= btn8.b2.y + btn8.b2.h) {
+                        no_hold = false; 
+                    }
 
-           } else {
-              if (x >= btn8.b1.x && x <= btn8.b1.x + btn8.b1.w && y >= btn8.b1.y && y <= btn8.b1.y + btn8.b1.h) {
-                
-                      grab = true;
-                      grab4 = true; 
-                    
-                  }
-          }
+                } else {
+                    if (x >= btn8.b1.x && x <= btn8.b1.x + btn8.b1.w && y >= btn8.b1.y && y <= btn8.b1.y + btn8.b1.h) {
+                        
+                        grab = true;
+                        grab4 = true; 
+                        
+                    }
+                }
 
-         } 
-         
-        else {
-           
-         }
+            } 
+            
+            else {
+            
+            }
 
         
-           break; 
-          
+            break; 
+
+
+        case 6*s:
+            if (grab) {
+                grab = false;
+                grab1 = false;
+                grab2 = false;
+                if (!lock.b1 && !lock.b2 && !lock.b3 && !lock.b4 && btn4.b3.x >= btn4.b1.x && btn4.b3.x <= btn4.b1.x + btn4.b1.w && btn4.b3.y >= btn4.b1.y && btn4.b3.y <= btn4.b1.y + btn4.b1.h && btn4.b4.x >= btn4.b2.x && btn4.b4.x <= btn4.b2.x + btn4.b2.w && btn4.b4.y >= btn4.b2.y && btn4.b4.y <= btn4.b2.y + btn4.b2.h) {
+                    etape += s;
+                    levelstart();
+                }
+            }else {
+                if (!lock.b3 && x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h) { 
+                    grab = true;
+                    grab1 = true;
+                }else if (!lock.b4 && x >= btn4.b4.x && x <= btn4.b4.x + btn4.b3.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b3.h) {
+                    grab = true;
+                    grab2 = true;
+                }
+            }
+            break;
     }
 });
 
@@ -199,30 +219,62 @@ canvas.addEventListener("mousemove", function(event) {
         case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
           
-           if (grab4 && (y> btn8.b1.h || y<btn8.b1.h)) {
+           if (grab4 && (y> btn4.b1.h || y<btn4.b1.h)) {
              
-                movey(y, btn8.b1);
-                btn8.b4.x=btn8.b1.x+40; 
-                btn8.b3.x=btn8.b1.x
+                movey(y, btn4.b1);
+                btn4.b4.x=btn4.b1.x+40; 
+                btn4.b3.x=btn4.b1.x
                 
                 
             }
-            if (grab4 && (x> btn8.b1.w || x<btn8.b1.w)) {
+            if (grab4 && (x> btn4.b1.w || x<btn4.b1.w)) {
                
-                movex(x, btn8.b1);
+                movex(x, btn4.b1);
                
-                btn8.b3.y=btn8.b1.y-20
-                btn8.b4.y=btn8.b1.y-20
+                btn4.b3.y=btn4.b1.y-20
+                btn4.b4.y=btn4.b1.y-20
               
             }
-            c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
-            c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
-            c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
-            c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
+            c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+            c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break; 
         
-          
-            
+        case 6*s:
+            if (grab1) {
+                btn4.b3.y = y - btn4.b3.h / 2;
+                btn4.b3.x = x - btn4.b3.w / 2;
+            }
+            if (grab2) {
+                btn4.b4.y = y - btn4.b3.h / 2;
+                btn4.b4.x = x - btn4.b3.w / 2;
+            }
+            if (grab) {
+                btn4.b4.w = Math.max(btn4.b4.x-btn4.b3.x, btn4.b3.x-btn4.b4.x);
+                btn4.b4.h = Math.max(btn4.b4.y-btn4.b3.y, btn4.b3.y-btn4.b4.y);
+            }
+            c.drawImage(bg, 0, 0, cw, ch);
+            c.fillStyle = "rgba(202,78,23,1)";
+            c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.fillRect(btn4.b3.x, Math.min(btn4.b4.y,btn4.b3.y), btn4.b3.w, btn4.b4.h);
+            c.fillRect(Math.min(btn4.b4.x, btn4.b3.x),btn4.b4.y, btn4.b4.w, btn4.b3.h);
+            c.drawImage(cyn, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+            c.drawImage(cyn, btn4.b3.x, btn4.b4.y, btn4.b3.w, btn4.b3.h);
+            c.drawImage(cyn, btn4.b4.x, btn4.b4.y, btn4.b3.w, btn4.b3.h);
+            if (lock.b1){
+                c.drawImage(bg, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            }
+            if (lock.b2){
+                c.drawImage(bg, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            }
+            if (lock.b3){
+                c.drawImage(bg, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+            }
+            if (lock.b4){
+                c.drawImage(bg, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+            }
 
     }c.fillRect(0, 0, 100, 100);
     /*c.fillRect(400, y - 50, 50, 100);
@@ -321,77 +373,133 @@ function levelstart() {
             break;
         case 3*s: 
             c.fillStyle = "rgba(202,78,23,1)"; 
-            btn8= {
-              b1:{
-                x: 385, 
-                y: 200, 
-                w: 50, 
-                h: 180
-            },
-              b2:{
-                x: 600, 
-                y: 300, 
-                w: 50, 
-                h: 10
-            },
-              b3:{
-                x: 385, 
-                y: 180, 
-                w: 10,
-                h: 10
-            },
-              b4:{
-                x: 425, 
-                y: 180, 
-                w: 10,
-                h: 10
-            }
+            btn4= {
+                b1:{
+                    x: 385, 
+                    y: 200, 
+                    w: 50, 
+                    h: 180
+                },
+                b2:{
+                    x: 600, 
+                    y: 300, 
+                    w: 50, 
+                    h: 10
+                },
+                b3:{
+                    x: 385, 
+                    y: 180, 
+                    w: 10,
+                    h: 10
+                },
+                b4:{
+                    x: 425, 
+                    y: 180, 
+                    w: 10,
+                    h: 10
+                }
 
 
            
-        };
-         break; 
-
+            };break; 
+        case 6*s:
+            btn4= {
+                b1:{
+                    x: 385, 
+                    y: 200,
+                    w: 50,
+                    h: 180
+                },
+                b2:{
+                    x: 600, 
+                    y: 300,
+                    w: 50,
+                    h: 10
+                },
+                b3:{
+                    x: 385, 
+                    y: 180,
+                    w: 10,
+                    h: 10
+                },
+                b4:{
+                    x: 485, 
+                    y: 80,
+                    w: 100,
+                    h: 100
+                }
+            };
+            lock={
+                b1:true,
+                b2:true,
+                b3:true,
+                b4:true,
+            }
+            break;
         
     }
 }
 
+
+
+
+
+
+
+
 canvas.addEventListener("dblclick",function(event) {
+    const{ offsetX:x, offsetY:y } = event;
     switch (etape) {
         case 3*s:  
          
             c.drawImage(bg, 0, 0, cw, ch);
-            const{ offsetX:x, offsetY:y } = event;
+            
             if (!no_hold) {
               
-                if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y) {
-                    btn8.b3.y+=2; 
+                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y) {
+                    btn4.b3.y+=2; 
 
 
                 }
 
-                if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y) {
-                    btn8.b4.y+=2; 
+                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y) {
+                    btn4.b4.y+=2; 
                 }
                 
-                if (btn8.b4.y==btn8.b1.y && btn8.b3.y==btn8.b1.y) {
-                    
+                if (btn4.b4.y==btn4.b1.y && btn4.b3.y==btn4.b1.y) {
                     
                     //levelstart();
                 }
 
 
-                c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
-                c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
-                c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
-                c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
-                break;
+                c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+                c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+                c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+                c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+                
+            }break;
+        
+        case 6*s:
+            if (x >= btn4.b1.x && x <= btn4.b1.x + btn4.b1.w && y >= btn4.b1.y && y <= btn4.b1.y + btn4.b1.h) {
+                lock.b1 = false;
+            }
+            if (x >= btn4.b2.x && x <= btn4.b2.x + btn4.b2.w && y >= btn4.b2.y && y <= btn4.b2.y + btn4.b2.h) {
+                lock.b2 = false;
+            }   
+            if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h) {
+                lock.b3 = false;
+            }
+            if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b3.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b3.h) {
+                lock.b4 = false;
+            }
+            // c.drawImage(cyn, 0, 0, cw, ch);
+            break;
+        
     }
-}
-   
+        
 
 
-})
+});
 
 function movey(y,b) {
     b.y = y - b.h / 2;
