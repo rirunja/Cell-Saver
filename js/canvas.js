@@ -30,7 +30,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 8;
+var etape = 0;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -324,6 +324,7 @@ canvas.addEventListener("mousemove", function(event) {
     c.fillRect(x - 50, y - 50, 100, 50);*/
 });
 
+
 function levelstart() {
     switch (etape) {
         case 0:
@@ -383,7 +384,7 @@ function levelstart() {
             break;
         case 3*s:*/
             c.fillStyle = "rgba(255, 0, 255, 1)";
-            btn6={
+            btn4={
                 b1:{
                     x: 385,
                     y: 200,
@@ -411,7 +412,7 @@ function levelstart() {
                 
                 
             };
-            console.log(btn4.b1.x);
+            //console.log(btn4.b1.x);
             break;
         case 3*s: 
             c.fillStyle = "rgba(202,78,23,1)"; 
@@ -507,17 +508,17 @@ canvas.addEventListener("dblclick",function(event) {
             const{ offsetX:x, offsetY:y } = event;
             if (!no_hold) {
               
-                if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y) {
+                if (x >= btn8.b3.x && x <= btn8.b3.x + btn8.b3.w && y >= btn8.b3.y && y <= btn8.b3.y + btn8.b3.h && btn8.b3.y<btn8.b1.y-10) {
                     btn8.b3.y+=2; 
 
 
                 }
 
-                if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y) {
+                if (x >= btn8.b4.x && x <= btn8.b4.x + btn8.b4.w && y >= btn8.b4.y && y <= btn8.b4.y + btn8.b4.h && btn8.b4.y<btn8.b1.y-10) {
                     btn8.b4.y+=2; 
                 }
                 
-                if (btn8.b4.y == btn8.b1.y && btn8.b3.y == btn8.b1.y) {
+                if (btn8.b4.y == btn8.b1.y-10 && btn8.b3.y == btn8.b1.y-10) {
                     no_hold=true; 
                     etape+=s; 
                     levelstart();
@@ -530,21 +531,7 @@ canvas.addEventListener("dblclick",function(event) {
             c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
             c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
             break;
-        /* case 5*s: 
-          
-         const{offsetX:x2, offsetY:y2} = event;
-            if (!no_hold) {
-               if (Math.sqrt((x2 - btn12.b3.x) * ( x2 - btn12.b3.x) + ( y2 - btn12.b3.y) * ( y2 - btn12.b3.y)) < btn12.b3.r) {
-                count_press+=1; 
-                if (count_press == 3) {
-                  no_hold = true; 
-                  count_press = 0;
-                  etape+=s; 
-                  levelstart();
-                }
-               }
-            }
-            break; */
+       
     
         
 
@@ -578,9 +565,9 @@ canvas.addEventListener("mouseup",function(event) {
 
                     duree_maintenue = (Date.now() - souris_enfoncée)/1000; 
                     
-                    if (duree_maintenue>=5.0) {
+                    if (duree_maintenue>=2.5) {
                         no_hold=true; 
-                        etape+=1; 
+                        etape+=s; 
                         levelstart(); 
                     }
                     else {
@@ -588,6 +575,7 @@ canvas.addEventListener("mouseup",function(event) {
                     }
                 }
             }
+            break; 
 
 
     }
@@ -596,6 +584,7 @@ canvas.addEventListener("mouseup",function(event) {
 
 
 })
+
 
 
 
