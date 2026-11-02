@@ -30,16 +30,30 @@ bg.onload = function() {
 
 var s = 2;//step
 
+<<<<<<< HEAD
 var etape = 6*s;
+=======
+var etape = 8;
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 var grab = false;
 var grab1 = false;
 var grab2 = false;
 var grab4 = false;
+var grab5=false; 
+var grab6=false; 
 var btn2;
 var btn4;
 var btn8; 
+var btn10;
+var btn12; 
 var no_hold=true;
+<<<<<<< HEAD
 var lock;
+=======
+var count_press=0; 
+var souris_enfoncée = null; 
+var duree_maintenue = 0; 
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
 
 
@@ -115,6 +129,7 @@ canvas.addEventListener("click", function(event) {
             }
 
         
+<<<<<<< HEAD
             break; 
 
 
@@ -137,6 +152,53 @@ canvas.addEventListener("click", function(event) {
                 }
             }
             break;
+=======
+           break; 
+        case 4*s:
+            if (grab) {
+                grab = false; 
+                grab5 = false; 
+                if (btn10.b1.x >= btn10.b2.x && btn10.b1.x <= btn10.b2.x + btn10.b2.w && btn10.b1.y >= btn10.b2.y && btn10.b1.y <= btn10.b2.y + btn10.b2.h) {
+                    etape+=s; 
+                    levelstart(); 
+
+                }
+            } 
+
+            else {
+               if (x >= btn10.b1.x && x <= btn10.b1.x + btn10.b1.w && y >= btn10.b1.y && y <= btn10.b1.y + btn10.b1.h)  {
+                grab = true; 
+                grab5 = true; 
+               }
+            }
+
+          break;
+        case 5*s: 
+          if (no_hold) {
+           if (grab) {
+             grab = false; 
+             grab6 = false; 
+             if (btn12.b3.x >= btn12.b1.x &&  btn12.b3.x <= btn12.b1.x + btn12.b1.w/2 && btn12.b3.y >= btn12.b1.y && btn12.b3.y <= btn12.b1.y + btn12.b1.h/2 ) {
+                 no_hold=false; 
+                 
+             }
+
+           }
+
+           else {
+              if (Math.sqrt((x - btn12.b3.x ) * ( x - btn12.b3.x ) + ( y - btn12.b3.y ) * ( y - btn12.b3.y)) < btn12.b3.r) {
+                grab = true; 
+                grab6 = true; 
+              }
+           }
+          }
+
+          
+
+          break; 
+             
+          
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
     }
 });
 
@@ -219,7 +281,11 @@ canvas.addEventListener("mousemove", function(event) {
         case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
           
+<<<<<<< HEAD
            if (grab4 && (y> btn4.b1.h || y<btn4.b1.h)) {
+=======
+           if (grab && (y> btn8.b1.h || y<btn8.b1.h)) {
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
              
                 movey(y, btn4.b1);
                 btn4.b4.x=btn4.b1.x+40; 
@@ -227,7 +293,11 @@ canvas.addEventListener("mousemove", function(event) {
                 
                 
             }
+<<<<<<< HEAD
             if (grab4 && (x> btn4.b1.w || x<btn4.b1.w)) {
+=======
+            if (grab && (x> btn8.b1.w || x<btn8.b1.w)) {
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
                
                 movex(x, btn4.b1);
                
@@ -240,6 +310,7 @@ canvas.addEventListener("mousemove", function(event) {
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break; 
+<<<<<<< HEAD
         
         case 6*s:
             if (grab1) {
@@ -275,6 +346,56 @@ canvas.addEventListener("mousemove", function(event) {
             if (lock.b4){
                 c.drawImage(bg, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             }
+=======
+        case 4*s: 
+           c.drawImage(bg, 0, 0, cw, ch);
+
+           if (grab && (y>btn10.b1.h || y<btn10.b1.h)) {
+            movey(y,btn10.b1); 
+           } 
+
+           if (grab && (x> btn10.b1.w || x<btn10.b1.w)) {
+               
+            movex(x, btn10.b1);
+           }
+           c.fillRect(btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
+           c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
+           c.fillRect(btn10.b3.x, btn10.b3.y, btn10.b3.w, btn10.b3.h);
+
+
+           break; 
+
+        case 5*s: 
+           c.drawImage(bg, 0, 0, cw, ch); 
+
+           if (grab && (x > btn12.b3.x || x < btn12.b3.x)) {
+              circle_movex(x,btn12.b3); 
+           }
+           if (grab && (y > btn12.b3.y || y < btn12.b3.y)) {
+              circle_movey(y,btn12.b3);
+           }
+           c.fillRect(btn12.b1.x, btn12.b1.y, btn12.b1.w, btn12.b1.h);
+           c.beginPath(); 
+           c.arc(btn12.b2.x,btn12.b2.y,btn12.b2.r,0,Math.PI*2,false); 
+           c.fill(); 
+           c.closePath(); 
+           c.fillStyle = "white"; 
+           c.beginPath(); 
+           c.arc(btn12.b3.x,btn12.b3.y,btn12.b3.r,0,Math.PI*2,false); 
+           c.fill(); 
+           c.closePath(); 
+           c.fillStyle = "rgba(120,12,65,1)"; 
+
+           
+          break; 
+      
+
+           
+
+           
+          
+            
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
     }c.fillRect(0, 0, 100, 100);
     /*c.fillRect(400, y - 50, 50, 100);
@@ -401,6 +522,7 @@ function levelstart() {
 
 
            
+<<<<<<< HEAD
             };break; 
         case 6*s:
             btn4= {
@@ -437,6 +559,61 @@ function levelstart() {
             }
             break;
         
+=======
+        };
+         break; 
+
+        case 4*s:
+            c.fillStyle = "rgba(65,89,185,1)";
+            btn10= {
+                b1: { 
+                  x : 120, 
+                  y : 145, 
+                  w : 70, 
+                  h : 150
+                }, 
+                b2: {
+                  x : 520, 
+                  y : 300, 
+                  w : 200, 
+                  h : 10
+                },
+                b3: {
+                  x : 520,
+                  y : 300, 
+                  w : 10,
+                  h : 200
+                }
+            }
+            break;  
+
+        case 5*s: 
+          c.fillStyle = "rgba(120,12,65,1)"; 
+          btn12 = {
+            b1: {
+                x : 700, 
+                y : 377, 
+                w : 45, 
+                h : 175
+            },
+
+           b2 :  {
+                x : 725,
+                y : 350,
+                r : 45
+            }, 
+
+            b3 : {
+                x : 120, 
+                y : 500, 
+                r : 25
+            }
+
+
+          }
+          break; 
+
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
     }
 }
 
@@ -466,12 +643,21 @@ canvas.addEventListener("dblclick",function(event) {
                     btn4.b4.y+=2; 
                 }
                 
+<<<<<<< HEAD
                 if (btn4.b4.y==btn4.b1.y && btn4.b3.y==btn4.b1.y) {
                     
                     //levelstart();
+=======
+                if (btn8.b4.y == btn8.b1.y && btn8.b3.y == btn8.b1.y) {
+                    no_hold=true; 
+                    etape+=s; 
+                    levelstart();
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
                 }
+            }
 
 
+<<<<<<< HEAD
                 c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
                 c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
                 c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
@@ -500,6 +686,81 @@ canvas.addEventListener("dblclick",function(event) {
 
 
 });
+=======
+            c.fillRect(btn8.b1.x, btn8.b1.y, btn8.b1.w, btn8.b1.h);
+            c.fillRect(btn8.b2.x, btn8.b2.y, btn8.b2.w, btn8.b2.h);
+            c.fillRect(btn8.b3.x, btn8.b3.y, btn8.b3.w, btn8.b3.h);
+            c.fillRect(btn8.b4.x, btn8.b4.y, btn8.b4.w, btn8.b4.h);
+            break;
+        /* case 5*s: 
+          
+         const{offsetX:x2, offsetY:y2} = event;
+            if (!no_hold) {
+               if (Math.sqrt((x2 - btn12.b3.x) * ( x2 - btn12.b3.x) + ( y2 - btn12.b3.y) * ( y2 - btn12.b3.y)) < btn12.b3.r) {
+                count_press+=1; 
+                if (count_press == 3) {
+                  no_hold = true; 
+                  count_press = 0;
+                  etape+=s; 
+                  levelstart();
+                }
+               }
+            }
+            break; */
+    
+        
+
+
+            
+            
+    }
+
+
+})
+ 
+canvas.addEventListener("mousedown",function(event) {
+    switch (etape) {
+       case 5*s: 
+           const{offsetX:x2, offsetY:y2} = event;
+           if ((!no_hold) && Math.sqrt((x2 - btn12.b3.x ) * ( x2 - btn12.b3.x ) + ( y2 - btn12.b3.y ) * ( y2 - btn12.b3.y)) < btn12.b3.r) {
+            souris_enfoncée = Date.now(); 
+         
+          }
+           break;
+    }
+})
+
+
+canvas.addEventListener("mouseup",function(event) {
+    switch (etape) {
+        case 5*s:
+            const{offsetX:x2, offsetY:y2} = event;
+            if (!no_hold && Math.sqrt((x2 - btn12.b3.x ) * ( x2 - btn12.b3.x ) + ( y2 - btn12.b3.y ) * ( y2 - btn12.b3.y)) < btn12.b3.r) {
+                if (souris_enfoncée != null) {
+
+                    duree_maintenue = (Date.now() - souris_enfoncée)/1000; 
+                    
+                    if (duree_maintenue>=5.0) {
+                        no_hold=true; 
+                        etape+=1; 
+                        levelstart(); 
+                    }
+                    else {
+                    duree_maintenue=0;
+                    }
+                }
+            }
+
+
+    }
+
+
+
+
+})
+
+
+>>>>>>> 9726bf36a710757989d485ff4f4f58c4a0915dfc
 
 function movey(y,b) {
     b.y = y - b.h / 2;
@@ -528,6 +789,18 @@ function fixex(b,b2) {
     b.x = b2.x;
 }
 
+function circle_movey(y,b) {
+    b.y = y;
+}
+
+function circle_movex(x,b) {
+    b.x = x; 
+}
+
+function circle_movexy(x,y,b) {
+    b.x = x; 
+    b.y = y; 
+}
 
 
 
