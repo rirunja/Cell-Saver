@@ -15,7 +15,8 @@ let bg = new Image();
 bg.src = "./images/titre.jpg";
 let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
-
+let tubever = new Image();
+tubever.src = "./images/tubever.jpg";
 
 
 var btn = {
@@ -838,11 +839,12 @@ canvas.addEventListener("mouseup",function(event) {
 
 
 })
-canvas.addEventListener("keydown",function(event) {
-    const pressedKey = event.key;
-    if (pressedKey == "Enter") {
-        etape += s;
-        levelstart();
+document.addEventListener("keypress",function(event) {
+    switch (event.key) {
+        case "p":
+            etape+=s;
+            levelstart(); 
+            break;
     }
 });
 
