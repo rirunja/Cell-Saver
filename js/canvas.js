@@ -106,6 +106,7 @@ canvas.addEventListener("click", function(event) {
             break;
         case 3*s:
             if (no_hold) { 
+                console.log(x,y); 
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
@@ -356,8 +357,9 @@ canvas.addEventListener("mousemove", function(event) {
                 btn4.b4.y=btn4.b1.y+4
               
             }
-            c.drawImage(materiel, 635,137,123,140,btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h,);
-            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+            //c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -767,13 +769,13 @@ canvas.addEventListener("dblclick",function(event) {
                 
             }
 
-            c.drawImage(materiel, 635,137,123,140,btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h,);
-            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+            //c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
-            c.fillStyle = "rgba(25,25,175,1)"; 
-
+            c.fillStyle = "rgba(25,25,175,1)";  
 
                 
             break;
