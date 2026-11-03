@@ -5,7 +5,8 @@ canvas.height = window.innerHeight;
 const cw = canvas.width;
 const ch = canvas.height;
 
-
+/**Ajout d'un minuteur, de consignes  et d'un "tire d'appréciation" sur la performance 
+ * (bien, moyen, nul) par rapport aux personnes (15 minutes pur les débutants, 7 minutes pour les experts*/
 var c = canvas.getContext("2d");
 
 c.fillStyle = "rgba(0, 0, 0, 1)";
@@ -51,6 +52,7 @@ var gauche_ouvert = false;
 var droite_ouvert = false;
 var haut_ouvert = false;
 var bas_ouvert = false;
+var ouverture = false; 
 
 
 
@@ -191,6 +193,7 @@ canvas.addEventListener("click", function(event) {
 
           break; 
         case 7*s : 
+        if (!ouverture) {
           if (x >= btn2.b1.x && x <= btn2.b1.x + btn2.b1.w && y >= btn2.b1.y && y <= btn2.b1.y + btn2.b1.h) { 
              const cx = btn2.b1.x + btn2.b1.w/2;
              const cy = btn2.b1.y + btn2.b1.h/2; 
@@ -225,12 +228,29 @@ canvas.addEventListener("click", function(event) {
                }
             }
 
+            if (gauche_ouvert && droite_ouvert && bas_ouvert && gauche_ouvert) {
+                ouverture=true;        
+            }
+        
+
+
+
             
              
              
 
 
           }
+        }
+
+        else {
+           if (x >= btn2.b2.x && x <= btn2.b2.x + btn2.b2.w && y >= btn2.b2.y && y <= btn2.b2.y + btn2.b2.h) {
+            ouverture=false; 
+            etape+=s; 
+            levelstart(); 
+
+           }
+        }
 
           break; 
         
@@ -419,6 +439,8 @@ canvas.addEventListener("mousemove", function(event) {
           break; 
         case 7*s: 
            c.drawImage(bg, 0, 0, cw, ch);
+
+           if (!ouverture) {
            c.fillRect(btn2.b1.x, btn2.b1.y, btn2.b1.w, btn2.b1.h);
            if (haut_ouvert) {
             c.beginPath(); 
@@ -456,6 +478,12 @@ canvas.addEventListener("mousemove", function(event) {
             c.closePath();
             c.fill(); 
           }
+
+        }
+
+        else {
+          c.fillRect(btn2.b2.x, btn2.b2.y, btn2.b2.w, btn2.b2.h); 
+        }
       
 
            
