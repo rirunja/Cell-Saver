@@ -47,6 +47,10 @@ var lock;
 var count_press=0; 
 var souris_enfoncée = null; 
 var duree_maintenue = 0; 
+var gauche_ouvert = false; 
+var droite_ouvert = false;
+var haut_ouvert = false;
+var bas_ouvert = false;
 
 
 
@@ -186,6 +190,51 @@ canvas.addEventListener("click", function(event) {
           
 
           break; 
+        case 7*s : 
+          if (x >= btn2.b1.x && x <= btn2.b1.x + btn2.b1.w && y >= btn2.b1.y && y <= btn2.b1.y + btn2.b1.h) { 
+             const cx = btn2.b1.x + btn2.b1.w/2;
+             const cy = btn2.b1.y + btn2.b1.h/2; 
+             const rx = btn2.b1.x; 
+             const ry = btn2.b1.y; 
+             const rw = btn2.b1.w; 
+             const rh = btn2.b1.h; 
+             const triangles = [[{rx , ry}, {rx:rx+rw , ry}, {rx:cx , ry:cy}], 
+                                [{rx:rx+rw , ry} , {rx:rx+rw , ry:ry+rh}, {rx:cx , ry:cy}],
+                                [{rx:rx+rw , ry:ry+rh}, {rx , ry:ry+rh}, {rx:cx , ry:cy}],
+                                [{rx , ry:ry+rh}, {rx , ry}, {rx:cx , ry:cy}]]; 
+             
+            var index = -1; 
+
+            for (let i = 0; i < triangles.length; i++) {
+                if (dot_in_triangle({rx:x,ry:y},triangles[i][0],triangles[i][1],triangles[i][2])) {
+                    index=i; 
+                }
+            }
+            if (index !== -1) {
+               switch (index) {
+                case 0: 
+                   haut_ouvert = true; 
+                   break; 
+                case 1:
+                   droite_ouvert = true;
+                   break; 
+                case 2:
+                    bas_ouvert = true; 
+                case 3: 
+                    gauche_ouvert = true;  
+               }
+            }
+
+            
+             
+             
+
+
+          }
+
+          break; 
+        
+     
              
           
     }
@@ -368,6 +417,45 @@ canvas.addEventListener("mousemove", function(event) {
 
            
           break; 
+        case 7*s: 
+           c.drawImage(bg, 0, 0, cw, ch);
+           c.fillRect(btn2.b1.x, btn2.b1.y, btn2.b1.w, btn2.b1.h);
+           if (haut_ouvert) {
+            c.beginPath(); 
+            c.moveTo(btn2.b1.x, btn2.b1.y); 
+            c.lineTo(btn2.b1.x + btn2.b1.w/2, btn2.b1.y - 30); 
+            c.lineTo(btn2.b1.x + btn2.b1.w , btn2.b1.y); 
+            c.closePath();
+            c.fill();
+           }
+
+           if (droite_ouvert) {
+            c.beginPath(); 
+            c.moveTo(btn2.b1.x + btn2.b1.w, btn2.b1.y); 
+            c.lineTo(btn2.b1.x + btn2.b1.w + 30, btn2.b1.y + btn2.b1.h/2); 
+            c.lineTo(btn2.b1.x + btn2.b1.w , btn2.b1.y + btn2.b1.h); 
+            c.lineTo(btn2.b1.x , btn2.b1.y+btn2.b1.h); 
+            c.closePath();
+            c.fill(); 
+           }
+
+           if (bas_ouvert) {
+            c.beginPath(); 
+            c.moveTo(btn2.b1.x + btn2.b1.w , btn2.b1.y + btn2.b1.h); 
+            c.lineTo(btn2.b1.x + btn2.b1.w/2, btn2.b1.y + btn2.b1.h + 30); 
+            c.lineTo(btn2.b1.x , btn2.b1.y+btn2.b1.h); 
+            c.closePath();
+            c.fill(); 
+           }
+
+          if (gauche_ouvert) {
+            c.beginPath(); 
+            c.moveTo(btn2.b1.x , btn2.b1.y); 
+            c.lineTo(btn2.b1.x - 30,btn2.b1.y + btn2.b1.h/2); 
+            c.lineTo(btn2.b1.x , btn2.b1.y+btn2.b1.h); 
+            c.closePath();
+            c.fill(); 
+          }
       
 
            
@@ -588,6 +676,26 @@ function levelstart() {
 
           }
           break; 
+        case 7*s: 
+          c.fillStyle=("rgba(65,174,100,1)"); 
+          btn2 = {
+            b1 : {
+               x : 500, 
+               y : 468, 
+               w : 120, 
+               h : 75
+
+            },
+
+            b2 : {
+                x : 500, 
+                y : 468, 
+                w : 70, 
+                h : 45
+            }
+            
+          } 
+          break; 
 
     }
 }
@@ -608,17 +716,17 @@ canvas.addEventListener("dblclick",function(event) {
             
             if (!no_hold) {
               
-                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y) {
+                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y-10) {
                     btn4.b3.y+=2; 
 
 
                 }
 
-                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y) {
+                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y-10) {
                     btn4.b4.y+=2; 
                 }
                 
-                if (btn4.b4.y==btn4.b1.y && btn4.b3.y==btn4.b1.y) {
+                if (btn4.b4.y==btn4.b1.y-10 && btn4.b3.y==btn4.b1.y-10) {
 
                     no_hold=true; 
                     etape+=s; 
@@ -750,6 +858,17 @@ function circle_movex(x,b) {
 function circle_movexy(x,y,b) {
     b.x = x; 
     b.y = y; 
+}
+
+function dot_in_triangle(p,a,b,c) { 
+     const sign = (p1, p2, p3) => 
+     (p1.rx - p3.rx) * (p2.ry - p3.ry) - (p2.rx - p3.rx) * (p1.ry - p3.ry); 
+     
+
+     const d1 = sign(p, a, b);
+     const d2 = sign(p, b, c);
+     const d3 = sign(p, c, a);
+     return d1 >= 0.0 && d2 >= 0.0 && d3 >=0.0; 
 }
 
 
