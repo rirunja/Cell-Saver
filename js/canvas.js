@@ -15,8 +15,8 @@ let bg = new Image();
 bg.src = "./images/titre.jpg";
 let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
-let tubever = new Image();
-tubever.src = "./images/tubever.jpg";
+let materiel = new Image(); 
+materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
 
 
 var btn = {
@@ -109,7 +109,7 @@ canvas.addEventListener("click", function(event) {
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
-                    if (btn4.b1.x >= btn4.b2.x && btn4.b1.x <= btn4.b2.x + btn4.b2.w && btn4.b1.y >= btn4.b2.y && btn4.b1.y <= btn4.b2.y + btn4.b2.h) {
+                    if (btn4.b1.x >= btn4.b2.x && btn4.b1.x <= btn4.b2.x + btn4.b2.w && btn4.b1.y+30 >= btn4.b2.y && btn4.b1.y+30 <= btn4.b2.y + btn4.b2.h) {
                         no_hold = false; 
                     }
 
@@ -343,7 +343,7 @@ canvas.addEventListener("mousemove", function(event) {
            if (grab4 && (y> btn4.b1.h || y<btn4.b1.h)) {
              
                 movey(y, btn4.b1);
-                btn4.b4.x=btn4.b1.x+40; 
+                btn4.b4.x=btn4.b1.x+90; 
                 btn4.b3.x=btn4.b1.x
                 
                 
@@ -352,14 +352,16 @@ canvas.addEventListener("mousemove", function(event) {
                
                 movex(x, btn4.b1);
                
-                btn4.b3.y=btn4.b1.y-20
-                btn4.b4.y=btn4.b1.y-20
+                btn4.b3.y=btn4.b1.y+4
+                btn4.b4.y=btn4.b1.y+4
               
             }
-            c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.drawImage(materiel, 635,137,123,140,btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h,);
             c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+            c.fillStyle = "rgba(25,25,175,1)"; 
             break; 
         
         case 6*s:
@@ -590,29 +592,29 @@ function levelstart() {
             //console.log(btn4.b1.x);
             break;
         case 3*s: 
-            c.fillStyle = "rgba(202,78,23,1)"; 
+            c.fillStyle = "rgba(25,25,175,1)"; 
             btn4= {
                 b1:{
                     x: 385, 
                     y: 200, 
-                    w: 50, 
-                    h: 180
+                    w: 123, 
+                    h: 120
                 },
                 b2:{
                     x: 600, 
                     y: 300, 
-                    w: 50, 
+                    w: 110, 
                     h: 10
                 },
                 b3:{
                     x: 385, 
-                    y: 180, 
+                    y: 204, 
                     w: 10,
                     h: 10
                 },
                 b4:{
-                    x: 425, 
-                    y: 180, 
+                    x: 475, 
+                    y: 204, 
                     w: 10,
                     h: 10
                 }
@@ -745,29 +747,34 @@ canvas.addEventListener("dblclick",function(event) {
             
             if (!no_hold) {
               
-                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y-10) {
+                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y+10) {
                     btn4.b3.y+=2; 
 
 
                 }
 
-                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y-10) {
+                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y+10) {
                     btn4.b4.y+=2; 
                 }
                 
-                if (btn4.b4.y==btn4.b1.y-10 && btn4.b3.y==btn4.b1.y-10) {
+                if (btn4.b4.y==btn4.b1.y+10 && btn4.b3.y==btn4.b1.y+10) {
 
                     no_hold=true; 
                     etape+=s; 
                     levelstart();
                 }
+                
+                
             }
 
+            c.drawImage(materiel, 635,137,123,140,btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h,);
+            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+            c.fillStyle = "rgb(250, 250, 250)";
+            c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+            c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+            c.fillStyle = "rgba(25,25,175,1)"; 
 
-                c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
-                c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
-                c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
-                c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+
                 
             break;
         
