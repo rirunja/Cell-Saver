@@ -153,7 +153,7 @@ canvas.addEventListener("click", function(event) {
             }
             break;
         case 4*s:
-            
+            console.log(x,y);
             if (grab) {
                 grab = false; 
                 grab5 = false; 
@@ -416,7 +416,8 @@ canvas.addEventListener("mousemove", function(event) {
            }
            c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
            c.drawImage(materiel, 778, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           
+           c.drawImage(materiel, 155, 165, 145, 100, 885, 189, 145, 50);
+           c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
           
 
 
@@ -675,7 +676,7 @@ function levelstart() {
                 }, 
                 b2: {
                   x : 896, 
-                  y : 246, 
+                  y : 186, 
                   w : 130, 
                   h : 10
                 }
