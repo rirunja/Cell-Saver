@@ -32,7 +32,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 0*s;
+var etape = 2*s;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -332,8 +332,8 @@ canvas.addEventListener("mousemove", function(event) {
                         stmovex(x,btn4.b2, btn4.b1.w);
                     }
                 }
-                c.drawImage(cyn, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
-                c.drawImage(cyn, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
+                c.drawImage(materiel,765,280,140,40, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
+                c.drawImage(materiel,900,280,40,235, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
                 //c.fillRect(btn4.b2, btn4.b2.y, btn4.b2.w, btn4.b2.h);**********NE PAS DECOMMENTER**********
                 //c.fillRect(btn4.x3, btn4.y3, btn4.w3, btn4.h3);
             }else {
@@ -856,11 +856,12 @@ document.addEventListener("keypress",function(event) {
     switch (event.key) {
         case "p":
             etape+=s;
-            levelstart(); 
+            levelstart();
+            break;
+        default:
             break;
     }
 });
-
 
 
 function movey(y,b) {
