@@ -106,7 +106,7 @@ canvas.addEventListener("click", function(event) {
             break;
         case 3*s:
             if (no_hold) { 
-                console.log(x,y); 
+               
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
@@ -153,6 +153,7 @@ canvas.addEventListener("click", function(event) {
             }
             break;
         case 4*s:
+            
             if (grab) {
                 grab = false; 
                 grab5 = false; 
@@ -225,12 +226,14 @@ canvas.addEventListener("click", function(event) {
                    break; 
                 case 2:
                     bas_ouvert = true; 
+                    break;
                 case 3: 
-                    gauche_ouvert = true;  
+                    gauche_ouvert = true;
+                    break;   
                }
             }
 
-            if (gauche_ouvert && droite_ouvert && bas_ouvert && gauche_ouvert) {
+            if (haut_ouvert && droite_ouvert && bas_ouvert && gauche_ouvert) {
                 ouverture=true;        
             }
         
@@ -359,7 +362,6 @@ canvas.addEventListener("mousemove", function(event) {
             }
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
-            //c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -403,7 +405,7 @@ canvas.addEventListener("mousemove", function(event) {
             break;
         case 4*s: 
            c.drawImage(bg, 0, 0, cw, ch);
-
+           
            if (grab && (y>btn10.b1.h || y<btn10.b1.h)) {
             movey(y,btn10.b1); 
            } 
@@ -412,9 +414,10 @@ canvas.addEventListener("mousemove", function(event) {
                
             movex(x, btn10.b1);
            }
-           c.fillRect(btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
-           c.fillRect(btn10.b3.x, btn10.b3.y, btn10.b3.w, btn10.b3.h);
+           c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+           c.drawImage(materiel, 778, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
+           
+          
 
 
            break; 
@@ -444,6 +447,7 @@ canvas.addEventListener("mousemove", function(event) {
           break; 
         case 7*s: 
            c.drawImage(bg, 0, 0, cw, ch);
+           
 
            if (!ouverture) {
            c.fillRect(btn2.b1.x, btn2.b1.y, btn2.b1.w, btn2.b1.h);
@@ -664,22 +668,16 @@ function levelstart() {
             c.fillStyle = "rgba(65,89,185,1)";
             btn10= {
                 b1: { 
-                  x : 120, 
-                  y : 145, 
+                  x : 385, 
+                  y : 200, 
                   w : 70, 
-                  h : 150
+                  h : 70
                 }, 
                 b2: {
-                  x : 520, 
-                  y : 300, 
-                  w : 200, 
+                  x : 896, 
+                  y : 246, 
+                  w : 130, 
                   h : 10
-                },
-                b3: {
-                  x : 520,
-                  y : 300, 
-                  w : 10,
-                  h : 200
                 }
             }
             break;  
@@ -710,19 +708,25 @@ function levelstart() {
           }
           break; 
         case 7*s: 
-          c.fillStyle=("rgba(65,174,100,1)"); 
+          var grad = c.createLinearGradient(0,0,300,300);
+          grad.addColorStop(0, 'blue');
+          grad.addColorStop(0.25, 'white');
+          grad.addColorStop(0.5, 'blue');
+          grad.addColorStop(0.75, 'white');
+          grad.addColorStop(1, 'blue'); 
+          c.fillStyle =  grad; 
           btn2 = {
             b1 : {
-               x : 500, 
-               y : 468, 
+               x : 770, 
+               y : 458, 
                w : 120, 
                h : 75
 
             },
 
             b2 : {
-                x : 500, 
-                y : 468, 
+                x : 790, 
+                y : 470, 
                 w : 70, 
                 h : 45
             }
@@ -771,7 +775,6 @@ canvas.addEventListener("dblclick",function(event) {
 
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
-            //c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -907,6 +910,7 @@ function dot_in_triangle(p,a,b,c) {
      const d1 = sign(p, a, b);
      const d2 = sign(p, b, c);
      const d3 = sign(p, c, a);
+
      return d1 >= 0.0 && d2 >= 0.0 && d3 >=0.0; 
 }
 
