@@ -860,6 +860,10 @@ document.addEventListener("keypress",function(event) {
             etape+=s;
             levelstart();
             break;
+        case "o":
+            etape-=s;
+            levelstart();
+            break;
         default:
             break;
     }
@@ -923,13 +927,15 @@ c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
 c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
 valeurs de la machine Alexis   */
 function machine() {
-    macx=956;
-    macy=348;
-    macw=200;
-    mach=200*250/90;
-    c.drawImage(materiel, 55, 120, 50, 200,  macx-66, macy-128, macw/200*150, mach/200*150);
-    c.drawImage(materiel, 192, 120, 50, 250, macx+134, macy-248, macw/150*150, mach/150*150);
-    c.drawImage(materiel, 96, 125, 90, 250, macx, macy, macw, mach);
+    machw=64;
+    machh=250;
+    macx=canvas.width/2-machw/2;
+    macy=310;
+    macw=150;
+    mach=macw*machh/machw;
+    c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
+    c.drawImage(materiel, 140, 100, 50, 250, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
+    c.drawImage(materiel, 76, 105, 64, 250, macx, macy, macw, mach);
 }
 
 
