@@ -361,9 +361,7 @@ canvas.addEventListener("mousemove", function(event) {
               
             }
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
-            c.drawImage(materiel, 55, 120, 50, 200, 890, 220, 150, 150*200/50);
-            c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
-            c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
+            machine();
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -916,6 +914,16 @@ function dot_in_triangle(p,a,b,c) {
      const d3 = sign(p, c, a);
 
      return d1 >= 0.0 && d2 >= 0.0 && d3 >=0.0; 
+}
+
+function machine() {
+    macx=956;
+    macy=348;
+    macw=200;
+    mach=200*250/90;
+    c.drawImage(materiel, 55, 120, 50, 200,  macx-66, macy-128, macw/200*150, mach/200*150);
+    c.drawImage(materiel, 192, 120, 50, 250, macx+134, macy-248, macw/150*150, mach/150*150);
+    c.drawImage(materiel, 96, 125, 90, 250, macx, macy, macw, mach);
 }
 
 
