@@ -5,6 +5,11 @@ canvas.height = window.innerHeight;
 const cw = canvas.width;
 const ch = canvas.height;
 
+/*c.drawImage(materiel, 55, 120, 50, 200, 890, 220, 150, 150*200/50);
+c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
+c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
+valeurs de la machine Alexis*/
+
 /**Ajout d'un minuteur, de consignes  et d'un "tire d'appréciation" sur la performance 
  * (bien, moyen, nul) par rapport aux personnes (15 minutes pur les débutants, 7 minutes pour les experts*/
 var c = canvas.getContext("2d");
