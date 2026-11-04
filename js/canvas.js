@@ -20,7 +20,7 @@ cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
 let potencedroite = new Image();
-potencedroite.src = "./images/CS-POTENCE.ai";
+potencedroite.src = "./images/CS-POTENCE.svg";
 
 
 var btn = {
