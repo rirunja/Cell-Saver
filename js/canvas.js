@@ -108,7 +108,6 @@ canvas.addEventListener("click", function(event) {
             break;
         case 3*s:
             if (no_hold) { 
-               console.log(x,y);
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
@@ -416,10 +415,11 @@ canvas.addEventListener("mousemove", function(event) {
                
             movex(x, btn10.b1);
            }
-           c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+           machine();
            c.drawImage(materiel, 778, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           c.drawImage(materiel, 155, 165, 145, 100, 885, 189, 145, 50);
+           c.drawImage(materiel, 950, 205, 60, 25, 1050, 42, 226, 226*25/60)
            c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
+           
           
 
 
@@ -610,9 +610,9 @@ function levelstart() {
                     h: 120
                 },
                 b2:{
-                    x: 600, 
+                    x: 900, 
                     y: 300, 
-                    w: 110, 
+                    w: 100, 
                     h: 10
                 },
                 b3:{
@@ -777,11 +777,12 @@ canvas.addEventListener("dblclick",function(event) {
             }
 
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
-            c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+            machine();
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
-            c.fillStyle = "rgba(25,25,175,1)";  
+            c.fillStyle = "rgba(25,25,175,1)"; 
+            
 
                 
             break;
