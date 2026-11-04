@@ -19,6 +19,8 @@ let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
+let potencedroite = new Image();
+potencedroite.src = "./images/CS-POTENCE.svg";
 
 
 var btn = {
@@ -935,7 +937,7 @@ function machine() {
     macw=150;
     mach=macw*machh/machw;
     c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
-    c.drawImage(materiel, 140, 100, 50, 250, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
+    c.drawImage(potencedroite, 0, 0, 5010, 2500, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
     c.drawImage(materiel, 76, 105, 64, 250, macx, macy, macw, mach);
 }
 
