@@ -32,7 +32,7 @@ bg.onload = function() {
 
 var s = 2;//step
 
-var etape = 2*s;
+var etape = 0*s;
 var grab = false;
 var grab1 = false;
 var grab2 = false;
@@ -106,7 +106,7 @@ canvas.addEventListener("click", function(event) {
             break;
         case 3*s:
             if (no_hold) { 
-               
+               console.log(x,y);
                 if (grab) {
                     grab = false; 
                     grab4 = false; 
@@ -361,7 +361,9 @@ canvas.addEventListener("mousemove", function(event) {
               
             }
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
-            c.drawImage(materiel, 155, 150, 369, 610, 603, 205, 517, 680);
+            c.drawImage(materiel, 55, 120, 50, 200, 890, 220, 150, 150*200/50);
+            c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
+            c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
