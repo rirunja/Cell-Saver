@@ -1,5 +1,6 @@
 var canvas = document.querySelector("canvas");
-
+window.innerHeight=948
+window.innerWidth=1912
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const cw = canvas.width;
@@ -7,20 +8,31 @@ const ch = canvas.height;
 
 
 
+
 /**Ajout d'un minuteur, de consignes  et d'un "tire d'appréciation" sur la performance 
  * (bien, moyen, nul) par rapport aux personnes (15 minutes pur les débutants, 7 minutes pour les experts*/
 var c = canvas.getContext("2d");
 
+//c.setTransform(dpr, 0, 0, dpr, 0, 0);
 c.fillStyle = "rgba(0, 0, 0, 1)";
+
+
+
+
 
 let bg = new Image();
 bg.src = "./images/titre.jpg";
 let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
+
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
+
+
 let potencedroite = new Image();
 potencedroite.src = "./images/CS-POTENCE.svg";
+
+
 
 
 var btn = {
@@ -422,9 +434,8 @@ canvas.addEventListener("mousemove", function(event) {
             movex(x, btn10.b1);
            }
            machine();
-           c.drawImage(materiel, 778, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           c.drawImage(materiel, 950, 205, 60, 25, 1050, 42, 226, 226*25/60)
-           c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
+           c.drawImage(materiel, 802, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
+           
            
           
 
@@ -616,7 +627,7 @@ function levelstart() {
                     h: 120
                 },
                 b2:{
-                    x: 900, 
+                    x: 750, 
                     y: 300, 
                     w: 100, 
                     h: 10
@@ -683,9 +694,9 @@ function levelstart() {
                   h : 70
                 }, 
                 b2: {
-                  x : 896, 
-                  y : 186, 
-                  w : 130, 
+                  x : 955, 
+                  y : 61, 
+                  w : 55, 
                   h : 10
                 }
             }
@@ -784,6 +795,7 @@ canvas.addEventListener("dblclick",function(event) {
 
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             machine();
+            
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -868,6 +880,12 @@ document.addEventListener("keypress",function(event) {
             levelstart();
             break;
         case "o":
+            no_hold = true;
+            ouverture = false;
+            haut_ouvert = false;
+            gauche_ouvert = false; 
+            droite_ouvert = false;
+            bas_ouvert = false;   
             etape-=s;
             levelstart();
             break;
