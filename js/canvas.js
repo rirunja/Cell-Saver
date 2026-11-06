@@ -1,6 +1,5 @@
 var canvas = document.querySelector("canvas");
-window.innerHeight=948
-window.innerWidth=1912
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const cw = canvas.width;
@@ -16,7 +15,9 @@ var c = canvas.getContext("2d");
 //c.setTransform(dpr, 0, 0, dpr, 0, 0);
 c.fillStyle = "rgba(0, 0, 0, 1)";
 
+const canvas_invisible = document.createElement("canvas"); 
 
+const ctx = canvas_invisible.getContext("2d"); 
 
 
 
@@ -26,6 +27,11 @@ let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
 
+materiel.onload = () => {
+     canvas_invisible.width = materiel.width; 
+     canvas_invisible.height = materiel.height; 
+     ctx.drawImage(materiel, 0, 0); 
+}
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
 
 
