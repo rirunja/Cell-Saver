@@ -14,9 +14,7 @@ var c = canvas.getContext("2d");
 //c.setTransform(dpr, 0, 0, dpr, 0, 0);
 c.fillStyle = "rgba(0, 0, 0, 1)";
 
-const canvas_invisible = document.createElement("canvas"); 
 
-const ctx = canvas_invisible.getContext("2d"); 
 
 
 
@@ -27,7 +25,6 @@ cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
 
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.png"; 
-
 
 let potencedroite = new Image();
 potencedroite.src = "./images/CS-POTENCE.png";
@@ -393,7 +390,7 @@ canvas.addEventListener("mousemove", function(event) {
                 btn4.b4.y=btn4.b1.y+4
               
             }
-            c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.drawImage(materiel, 5000, 250, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             machine();
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
