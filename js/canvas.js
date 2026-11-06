@@ -947,21 +947,7 @@ function dot_in_triangle(p,a,b,c) {
      return d1 >= 0.0 && d2 >= 0.0 && d3 >=0.0; 
 }
 
-/*c.drawImage(materiel, 55, 120, 50, 200, 890, 220, 150, 150*200/50);
-c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
-c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
-valeurs de la machine Alexis   */
 
-/*machw=65;
-machh=250;
-macx=canvas.width/2-machw/2;
-macy=310;
-macw=150;
-mach=macw*machh/machw;
-c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
-c.drawImage(potencedroite, 0, 0, 5010, 2500, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
-c.drawImage(materiel, 76, 105, 65, 250, macx, macy, macw, mach);
-valeurs de la machine Mathis   */
 
 function machine() {
     machw=65;
@@ -970,9 +956,9 @@ function machine() {
     macy=310;
     macw=150;
     mach=macw*machh/machw;
-    c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-96, macw/4*3, macw*3);
-    c.drawImage(potencedroite, 700, 100, 100,800, macx+100, macy-240, macw/4*3, macw*7/4*3);
-    c.drawImage(materiel, 76, 105, 65, 250, macx, macy, macw, mach);
+    c.drawImage(materiel, 120, 300, 225, 225*200/35,  macx-66, macy-96, macw/4*3, macw*3);
+    c.drawImage(potencedroite, 0, 0, potencedroite.width/3, potencedroite.height, macx+103, macy-240, macw/4*3, macw*5/4*3);
+    c.drawImage(materiel, 365, 385, 425, 425*250/65, macx, macy, macw, mach);
 }
 
 
