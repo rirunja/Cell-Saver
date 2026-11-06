@@ -363,7 +363,7 @@ canvas.addEventListener("mousemove", function(event) {
            if (grab4 && (y> btn4.b1.h || y<btn4.b1.h)) {
              
                 movey(y, btn4.b1);
-                btn4.b4.x=btn4.b1.x+90; 
+                btn4.b4.x=btn4.b1.x+75; 
                 btn4.b3.x=btn4.b1.x
                 
                 
@@ -376,12 +376,13 @@ canvas.addEventListener("mousemove", function(event) {
                 btn4.b4.y=btn4.b1.y+4
               
             }
-            c.drawImage(materiel, 5000, 250, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
+            c.drawImage(materiel, 3150, 250, 610, 800, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             machine();
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             c.fillStyle = "rgba(25,25,175,1)"; 
+            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h)
             break; 
         
         case 6*s:
@@ -621,13 +622,13 @@ function levelstart() {
                 b1:{
                     x: 385, 
                     y: 200, 
-                    w: 123, 
+                    w: 100, 
                     h: 120
                 },
                 b2:{
-                    x: 750, 
-                    y: 300, 
-                    w: 100, 
+                    x: 875, 
+                    y: 500, 
+                    w: 80, 
                     h: 10
                 },
                 b3:{
@@ -637,7 +638,7 @@ function levelstart() {
                     h: 10
                 },
                 b4:{
-                    x: 475, 
+                    x: 460, 
                     y: 204, 
                     w: 10,
                     h: 10
