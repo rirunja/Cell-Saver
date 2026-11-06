@@ -78,8 +78,8 @@ function machine() {
 
     macx=canvas.width/2-macw/2;
     macy=canvas.height-mach;
-    c.drawImage(materiel, 120, 300, 225, 225*200/35,  macx*0.901, macy*0.75, macw/4*3, macw*3);
-    c.drawImage(potencedroite, 0, 0, potencedroite.width/3, potencedroite.height, macx*1.15, macy*0.2, macw/4*3, macw*5/4*3);
+    c.drawImage(materiel, 120, 300, 225, 225*200/35,  macx-macw*0.45, macy-mach*0.25, macw/4*3, macw*3);
+    c.drawImage(potencedroite, 0, 0, potencedroite.width/3, potencedroite.height, macx+macw*0.695, macy-mach*0.65, macw/4*3, macw*5/4*3);
     c.drawImage(materiel, 365, 385, machw, machh, macx, macy, macw, mach);
 }
 machine();
