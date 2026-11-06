@@ -386,8 +386,8 @@ canvas.addEventListener("mousemove", function(event) {
                
                 movex(x, btn4.b1);
                
-                btn4.b3.y=btn4.b1.y+4
-                btn4.b4.y=btn4.b1.y+4
+                btn4.b3.y=btn4.b1.y+2
+                btn4.b4.y=btn4.b1.y+2
               
             }
             c.drawImage(materiel, 3150, 250, 610, 800, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
@@ -640,20 +640,20 @@ function levelstart() {
                     h: 120
                 },
                 b2:{
-                    x: 875, 
-                    y: 500, 
-                    w: 80, 
-                    h: 10
+                    x: 770, 
+                    y: 350, 
+                    w: 110, 
+                    h: 20
                 },
                 b3:{
                     x: 385, 
-                    y: 204, 
+                    y: 202, 
                     w: 10,
                     h: 10
                 },
                 b4:{
                     x: 460, 
-                    y: 204, 
+                    y: 202, 
                     w: 10,
                     h: 10
                 }
