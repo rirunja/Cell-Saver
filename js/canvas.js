@@ -451,17 +451,18 @@ canvas.addEventListener("mousemove", function(event) {
            if (grab && (y > btn12.b3.y || y < btn12.b3.y)) {
               circle_movey(y,btn12.b3);
            }
-           c.fillRect(btn12.b1.x, btn12.b1.y, btn12.b1.w, btn12.b1.h);
-           c.beginPath(); 
-           c.arc(btn12.b2.x,btn12.b2.y,btn12.b2.r,0,Math.PI*2,false); 
-           c.fill(); 
-           c.closePath(); 
+           c.drawImage(materiel, 385, 2000, 400, 720, btn12.b1.x, btn12.b1.y, btn12.b1.w, btn12.b1.h);
+           
            c.fillStyle = "white"; 
            c.beginPath(); 
            c.arc(btn12.b3.x,btn12.b3.y,btn12.b3.r,0,Math.PI*2,false); 
            c.fill(); 
            c.closePath(); 
            c.fillStyle = "rgba(120,12,65,1)"; 
+           c.beginPath(); 
+           c.arc(btn12.b2.x,btn12.b2.y,btn12.b2.r,0,Math.PI*2,false); 
+           c.fill(); 
+           c.closePath(); 
 
            
           break; 
@@ -708,20 +709,20 @@ function levelstart() {
             b1: {
                 x : 700, 
                 y : 377, 
-                w : 45, 
-                h : 175
+                w : 140, 
+                h : 300
             },
 
            b2 :  {
-                x : 725,
-                y : 350,
-                r : 45
+                x : 780,
+                y : 500,
+                r : 20
             }, 
 
             b3 : {
                 x : 120, 
                 y : 500, 
-                r : 25
+                r : 20
             }
 
 
