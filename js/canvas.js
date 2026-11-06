@@ -1,5 +1,6 @@
 var canvas = document.querySelector("canvas");
-
+window.innerHeight=948
+window.innerWidth=1912
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const cw = canvas.width;
@@ -7,20 +8,33 @@ const ch = canvas.height;
 
 
 
+
 /**Ajout d'un minuteur, de consignes  et d'un "tire d'appréciation" sur la performance 
  * (bien, moyen, nul) par rapport aux personnes (15 minutes pur les débutants, 7 minutes pour les experts*/
 var c = canvas.getContext("2d");
 
+//c.setTransform(dpr, 0, 0, dpr, 0, 0);
 c.fillStyle = "rgba(0, 0, 0, 1)";
+
+const canvas_invisible = document.createElement("canvas"); 
+
+const ctx = canvas_invisible.getContext("2d"); 
+
+
 
 let bg = new Image();
 bg.src = "./images/titre.jpg";
 let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
+
 materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
+
+
 let potencedroite = new Image();
 potencedroite.src = "./images/CS-POTENCE.svg";
+
+
 
 
 var btn = {
@@ -418,9 +432,8 @@ canvas.addEventListener("mousemove", function(event) {
             movex(x, btn10.b1);
            }
            machine();
-           c.drawImage(materiel, 778, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           c.drawImage(materiel, 950, 205, 60, 25, 1050, 42, 226, 226*25/60)
-           c.fillRect(btn10.b2.x, btn10.b2.y, btn10.b2.w, btn10.b2.h);
+           c.drawImage(materiel, 802, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
+           
            
           
 
@@ -612,7 +625,7 @@ function levelstart() {
                     h: 120
                 },
                 b2:{
-                    x: 900, 
+                    x: 750, 
                     y: 300, 
                     w: 100, 
                     h: 10
@@ -679,9 +692,9 @@ function levelstart() {
                   h : 70
                 }, 
                 b2: {
-                  x : 896, 
-                  y : 186, 
-                  w : 130, 
+                  x : 955, 
+                  y : 61, 
+                  w : 55, 
                   h : 10
                 }
             }
@@ -780,6 +793,7 @@ canvas.addEventListener("dblclick",function(event) {
 
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             machine();
+            
             c.fillStyle = "rgb(250, 250, 250)";
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
@@ -864,6 +878,12 @@ document.addEventListener("keypress",function(event) {
             levelstart();
             break;
         case "o":
+            no_hold = true;
+            ouverture = false;
+            haut_ouvert = false;
+            gauche_ouvert = false; 
+            droite_ouvert = false;
+            bas_ouvert = false;   
             etape-=s;
             levelstart();
             break;
@@ -930,15 +950,22 @@ c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
 c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
 valeurs de la machine Alexis   */
 function machine() {
-    machw=64;
-    machh=250;
-    macx=canvas.width/2-machw/2;
-    macy=310;
-    macw=150;
-    mach=macw*machh/machw;
-    c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
-    c.drawImage(potencedroite, 0, 0, 5010, 2500, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
-    c.drawImage(materiel, 76, 105, 64, 250, macx, macy, macw, mach);
+    
+   
+         macx = 800;
+         macy = 348;
+         macw = 200;
+         mach = 200*250/90;
+         c.drawImage(materiel, 55, 120, 50, 200,  macx-66, macy-128, macw/200*150, mach/200*150);
+         /* NE PAS DECOMMENTER c.drawImage(materiel, 192, 120, 50, 250, macx+134, macy-248, macw/150*150, mach/150*150);*/
+         c.drawImage(potencedroite, 800, 125, 400, 600, macx+30, macy-400, macw/90*150, mach/125*150);
+         c.drawImage(materiel, 96, 125, 90, 250, macx, macy, macw, mach);
+         
+
+        
+        
+    
+    
 }
 
 
