@@ -16,9 +16,7 @@ var c = canvas.getContext("2d");
 //c.setTransform(dpr, 0, 0, dpr, 0, 0);
 c.fillStyle = "rgba(0, 0, 0, 1)";
 
-const canvas_invisible = document.createElement("canvas"); 
 
-const ctx = canvas_invisible.getContext("2d"); 
 
 
 
