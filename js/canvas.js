@@ -369,7 +369,7 @@ canvas.addEventListener("mousemove", function(event) {
                 c.fillStyle = "rgba(255, 0, 255, 0.1)";
                 c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
 
-            }c.drawImage(materiel, 100, 500, 100, 100, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+            }c.drawImage(materiel, 1740, 2490, 410, 410, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break;
         case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
@@ -602,31 +602,29 @@ function levelstart() {
             c.fillStyle = "rgba(255, 0, 255, 0.1)";
             btn4={
                 b1:{
-                    x: 810,
-                    y: 330,
-                    w: 75,
-                    h: 75
+                    x: macx+macw*0.695,
+                    y: macy,
+                    w: macw/2,
+                    h: macw/2
                 },
                 b2:{
-                    x: 810,
-                    y: 330,
-                    w: 50,
-                    h: 50
+                    x: macx+macw*0.695,
+                    y: macy,
+                    w: macw/4,
+                    h: macw/4
                 },
                 b3:{
-                    x: 810,
-                    y: 330,
-                    w: 50,
-                    h: 50},
+                    x: macx+macw*0.695,
+                    y: macy,
+                    w: macw/4,
+                    h: macw/4
+                },
                 b4:{
-                    x: 1285,
-                    y: 400,
-                    w: 50,
-                    h: 50
-                }
-                
-                
-                
+                    x: macx-macw*0.2,
+                    y: macy-mach*0.5,
+                    w: macw/4,
+                    h: macw/4
+                }      
             };
             //console.log(btn4.b1.x);
             break;
