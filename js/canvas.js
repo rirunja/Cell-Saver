@@ -386,8 +386,8 @@ canvas.addEventListener("mousemove", function(event) {
                
                 movex(x, btn4.b1);
                
-                btn4.b3.y=btn4.b1.y+2
-                btn4.b4.y=btn4.b1.y+2
+                btn4.b3.y=btn4.b1.y+6; 
+                btn4.b4.y=btn4.b1.y+6;
               
             }
             c.drawImage(materiel, 3150, 250, 610, 800, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
@@ -396,7 +396,7 @@ canvas.addEventListener("mousemove", function(event) {
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             c.fillStyle = "rgba(25,25,175,1)"; 
-            c.fillRect(btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h)
+           
             break; 
         
         case 6*s:
@@ -446,8 +446,8 @@ canvas.addEventListener("mousemove", function(event) {
             movex(x, btn10.b1);
            }
            machine();
-           c.drawImage(materiel, 802, 750, 120, 120, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
-           
+           c.drawImage(materiel, 4000, 3500, 600, 600, btn10.b1.x, btn10.b1.y, btn10.b1.w, btn10.b1.h);
+            
            
           
 
@@ -634,26 +634,26 @@ function levelstart() {
             c.fillStyle = "rgba(25,25,175,1)"; 
             btn4= {
                 b1:{
-                    x: 385, 
+                    x: 825, 
                     y: 200, 
                     w: 100, 
                     h: 120
                 },
                 b2:{
                     x: 770, 
-                    y: 350, 
+                    y: 335, 
                     w: 110, 
                     h: 20
                 },
                 b3:{
                     x: 385, 
-                    y: 202, 
+                    y: 206, 
                     w: 10,
                     h: 10
                 },
                 b4:{
                     x: 460, 
-                    y: 202, 
+                    y: 206, 
                     w: 10,
                     h: 10
                 }
@@ -701,15 +701,15 @@ function levelstart() {
             c.fillStyle = "rgba(65,89,185,1)";
             btn10= {
                 b1: { 
-                  x : 385, 
+                  x : 825, 
                   y : 200, 
                   w : 70, 
                   h : 70
                 }, 
                 b2: {
-                  x : 955, 
-                  y : 61, 
-                  w : 55, 
+                  x : 1010, 
+                  y : 135, 
+                  w : 80, 
                   h : 10
                 }
             }
@@ -786,26 +786,26 @@ canvas.addEventListener("dblclick",function(event) {
             
             if (!no_hold) {
               
-                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y+10) {
+                if (x >= btn4.b3.x && x <= btn4.b3.x + btn4.b3.w && y >= btn4.b3.y && y <= btn4.b3.y + btn4.b3.h && btn4.b3.y<btn4.b1.y+14) {
                     btn4.b3.y+=2; 
 
 
                 }
 
-                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y+10) {
+                if (x >= btn4.b4.x && x <= btn4.b4.x + btn4.b4.w && y >= btn4.b4.y && y <= btn4.b4.y + btn4.b4.h && btn4.b4.y<btn4.b1.y+14) {
                     btn4.b4.y+=2; 
                 }
                 
-                if (btn4.b4.y==btn4.b1.y+10 && btn4.b3.y==btn4.b1.y+10) {
+                if (btn4.b4.y==btn4.b1.y+14 && btn4.b3.y==btn4.b1.y+14) {
 
                     no_hold=true; 
                     etape+=s; 
                     levelstart();
                 }
+
                 
                 
             }
-
             c.drawImage(materiel, 635, 137, 123, 140, btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
             machine();
             
@@ -813,6 +813,8 @@ canvas.addEventListener("dblclick",function(event) {
             c.fillRect(btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
             c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             c.fillStyle = "rgba(25,25,175,1)"; 
+
+            
             
 
                 
