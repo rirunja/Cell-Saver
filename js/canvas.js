@@ -1,6 +1,4 @@
 var canvas = document.querySelector("canvas");
-window.innerHeight=948
-window.innerWidth=1912
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const cw = canvas.width;
@@ -26,11 +24,11 @@ let cyn = new Image();
 cyn.src = "./images/cyn.jpeg";
 let materiel = new Image(); 
 
-materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.svg"; 
+materiel.src = "./images/ILL-planche_composants_cell_saver_xtra_calques copie.png"; 
 
 
 let potencedroite = new Image();
-potencedroite.src = "./images/CS-POTENCE.svg";
+potencedroite.src = "./images/CS-POTENCE.png";
 
 
 
