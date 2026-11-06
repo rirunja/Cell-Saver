@@ -310,6 +310,9 @@ canvas.addEventListener("mousemove", function(event) {
             break;
         case 3*s:*/
             c.drawImage(bg, 0, 0, cw, ch);
+            machine();
+            c.fillStyle = "rgba(130, 130, 130, 1)";
+            c.fillRect(btn4.b4.x-50, btn4.b4.y-50, btn4.b4.w+100, btn4.b4.h+100);
             if (grab){
                 if (grab && x>= btn4.b3.w / 2 && x <= cw - btn4.b3.w / 2) {
                     if (y>btn4.b1.y + btn4.b1.h * 0.5) {
@@ -323,7 +326,6 @@ canvas.addEventListener("mousemove", function(event) {
                 }
                 if (grab && y>= btn4.b2.h / 2 && y <= ch - btn4.b2.h / 2) {
                     movey(y, btn4.b2);
-                    c.fillStyle = "rgba(0, 0, 255, 0.3)";
                 }
                 if (grab && x>= btn4.b1.w / 2 && x <= cw - btn4.b1.w / 2) {
                     if (x>btn4.b2.x + btn4.b2.w / 2) {
@@ -335,14 +337,16 @@ canvas.addEventListener("mousemove", function(event) {
                         stmovex(x,btn4.b2, btn4.b1.w);
                     }
                 }
+                
                 c.drawImage(materiel,765,280,140,30, btn4.b2.x, btn4.b2.y, btn4.b2.w, btn4.b2.h);
                 c.drawImage(materiel,900,280,30,235, btn4.b3.x, btn4.b3.y, btn4.b3.w, btn4.b3.h);
                 //c.fillRect(btn4.b2, btn4.b2.y, btn4.b2.w, btn4.b2.h);**********NE PAS DECOMMENTER**********
                 //c.fillRect(btn4.x3, btn4.y3, btn4.w3, btn4.h3);
             }else {
+                c.fillStyle = "rgba(255, 0, 255, 0.1)";
                 c.fillRect(btn4.b1.x, btn4.b1.y, btn4.b1.w, btn4.b1.h);
 
-            }c.fillRect(btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
+            }c.drawImage(materiel, 100, 500, 100, 100, btn4.b4.x, btn4.b4.y, btn4.b4.w, btn4.b4.h);
             break;
         case 3*s: 
           c.drawImage(bg, 0, 0, cw, ch);
@@ -571,27 +575,27 @@ function levelstart() {
             }};
             break;
         case 3*s:*/
-            c.fillStyle = "rgba(255, 0, 255, 1)";
+            c.fillStyle = "rgba(255, 0, 255, 0.1)";
             btn4={
                 b1:{
-                    x: 385,
-                    y: 200,
-                    w: 50,
-                    h: 50
+                    x: 810,
+                    y: 330,
+                    w: 75,
+                    h: 75
                 },
                 b2:{
-                    x: 385,
-                    y: 200,
+                    x: 810,
+                    y: 330,
                     w: 50,
                     h: 50
                 },
                 b3:{
-                    x: 385,
-                    y: 200,
+                    x: 810,
+                    y: 330,
                     w: 50,
                     h: 50},
                 b4:{
-                    x: 785,
+                    x: 1285,
                     y: 400,
                     w: 50,
                     h: 50
@@ -929,16 +933,28 @@ function dot_in_triangle(p,a,b,c) {
 c.drawImage(materiel, 192, 120, 50, 250, 1080, 100, 150, 150*250/50);
 c.drawImage(materiel, 96, 125, 90, 250, 956, 348, 200, 200*250/90);
 valeurs de la machine Alexis   */
+
+/*machw=65;
+machh=250;
+macx=canvas.width/2-machw/2;
+macy=310;
+macw=150;
+mach=macw*machh/machw;
+c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
+c.drawImage(potencedroite, 0, 0, 5010, 2500, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
+c.drawImage(materiel, 76, 105, 65, 250, macx, macy, macw, mach);
+valeurs de la machine Mathis   */
+
 function machine() {
-    machw=64;
+    machw=65;
     machh=250;
     macx=canvas.width/2-machw/2;
     macy=310;
     macw=150;
     mach=macw*machh/machw;
-    c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-128, macw/4*3, macw*3);
-    c.drawImage(potencedroite, 0, 0, 5010, 2500, macx+91, macy-218, macw/4*3, (mach*3*machw/200));
-    c.drawImage(materiel, 76, 105, 64, 250, macx, macy, macw, mach);
+    c.drawImage(materiel, 40, 100, 35, 200,  macx-66, macy-96, macw/4*3, macw*3);
+    c.drawImage(potencedroite, 700, 100, 100,800, macx+100, macy-240, macw/4*3, macw*7/4*3);
+    c.drawImage(materiel, 76, 105, 65, 250, macx, macy, macw, mach);
 }
 
 
